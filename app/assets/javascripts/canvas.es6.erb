@@ -1,0 +1,38 @@
+// only run this js on stage page ready
+$('.pages.stage').ready(function() {
+  // using vanilla js from this point on to avoid vid/canvas perform issues
+  // get video
+  const video = document.getElementById('stage-video');
+  let vw, vh;
+  // get canvas contexts
+  const stage = document.getElementById('stage-canvas');
+  const stageCtx = stage.getContext('2d');
+  const sim = document.getElementById('sim-canvas');
+  const simCtx = sim.getContext('2d');
+
+  // when video metadata is available
+  video.addEventListener('loadedmetadata', function() {
+    vw = this.videoWidth || this.width;
+    vh = this.videoHeight || this.height;
+    stage.width = vw;
+    sim.width = vw;
+    stage.height = vh;
+    sim.height = vh;
+  }, false); // explicit false re useCapture for older browser compat
+
+
+
+  const draw = function() {
+    if (video.paused || video.ended) {
+      return;
+    }
+    stageCtx.drawImage(video, 0, 0, vw, vh);
+    simCtx.drawImage(video, 0, 0, vw, vh);
+    requestAnimationFrame( draw );
+  };
+
+  // when video plays, draw to the canvases (canvii?)
+  video.addEventListener('play', draw, false);
+
+
+});
