@@ -9,7 +9,7 @@ class VideosController < ApplicationController
         :resource_type => :video,
         :eager => [{
           :format => "mp4",
-          :width => 1280,
+          :width => 640,
           :crop => "limit",
         }],
         :eager_async => false, # TODO could have eager callback and do async?

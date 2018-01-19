@@ -1,47 +1,49 @@
 <h1>upload</h1>
 
-<%= puts "TEST #{ @upload_error }" %>
+<!-- ** if errors from prev cloudinary upload attempt -->
+<% if @upload_error %>
+  <div id="upload-errors">
+    <h3>Sorry, your video could not be uploaded.</h3>
+    <ul>
+      <!-- keeping in ul for consistent aesthetic -->
+      <li><%= @upload_error %></li>
+    </ul>
+  </div>
+<% end %>
+
+<!-- ** if errors from previous db save attempt ** -->
+<% if @video.errors.any? %>
+  <div id="save-errors">
+    <h3>Sorry, your video could not be saved.</h3>
+    <ul>
+      <%= image.errors.full_messages.each do |m| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <!-- FORM -->
-
-
 <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
 
-  <!-- ** if errors from prev cloudinary upload attempt -->
-  <% if @upload_error %>
-    <div id="upload-errors">
-      <h3>Sorry, your video could not be uploaded.</h3>
-      <ul>
-        <!-- keeping in ul for consistent aesthetic -->
-        <li><%= @upload_error %></li>
-      </ul>
-    </div>
-  <% end %>
-
-  <!-- ** if errors from previous db save attempt ** -->
-  <% if @video.errors.any? %>
-    <div id="save-errors">
-      <h3>Sorry, your video could not be saved.</h3>
-      <ul>
-        <%= image.errors.full_messages.each do |m| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <!-- form body -->
-  <div class="field">
+  <fieldset>
     <%= form.label :file %>
     <%= form.file_field :file %>
-  <div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= form.label :name %>
     <%= form.text_area :name %>
-  </div>
+  </fieldset>
 
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<!-- PROGRESS -->
+<div class="progress">
+  <p>Upload in progress...</p>
+</div>

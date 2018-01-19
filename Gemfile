@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'jquery-rails'
+gem 'sprockets'
+gem 'sprockets-es6'
+gem 'jquery-fileupload-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

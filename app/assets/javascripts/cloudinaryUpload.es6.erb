@@ -1,0 +1,31 @@
+// FROM CLOUDINARY DOCS:
+// You can track the upload progress by binding to the following events:
+// fileuploadsend, fileuploadprogress, fileuploaddone and fileuploadfail
+
+// You can find more details and options in the documention of jQuery-File-Upload.
+//
+// The following Javascript code updates a progress bar according to the data of the fileuploadprogress event:
+// $('.cloudinary-fileupload').bind('fileuploadprogress', function(e, data) {
+//     $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+// });
+//
+
+
+
+
+$(document).ready(function() {
+  $('.actions>input').on('click', function() {
+    $('.progress').css("display", "block");
+  });
+
+  // $('.upload').bind('fileuploadsend', function() {
+  //   console.log( 'File upload send' );
+  // });
+  // $('.upload').bind('fileuploadprogress', function() {
+  //   console.log( 'File upload progress' );
+  // });
+  // $('.upload').bind('fileuploaddone', function() {
+  //   console.log( 'File upload done' );
+  // });
+
+});
