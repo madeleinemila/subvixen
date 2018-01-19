@@ -1,4 +1,5 @@
 let video;
+const fixtures = [];
 
 // only run this js on stage page ready
 $('.pages.stage').ready(function() {
@@ -37,4 +38,27 @@ $('.pages.stage').ready(function() {
   video.addEventListener('play', draw, false);
 
 
-});
+
+
+  // ******* FIXTURE CREATION *********
+  stage.addEventListener('click', function(e) {
+    const mousePos = getMousePos( this, e );
+    fixtures.push({
+      x: mousePos.x,
+      y: mousePos.y,
+    });
+  });
+
+}); // end page ready
+
+
+
+
+// *** Helper functions ***
+
+const getMousePos = function( canvas, event ) {
+  const rect = canvas.getBoundingClientRect(); // to use clientX and clientY and normalize across browsers
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  return { x, y };
+}
