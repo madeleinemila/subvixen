@@ -1,0 +1,11 @@
+.stage-container {
+  video {
+    // max-width: 480px;
+  }
+  canvas {
+    border: solid lightgrey 1px;
+    display: block;
+    width: 640px;
+    height: 360px;
+  }
+}

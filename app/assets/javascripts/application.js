@@ -12,4 +12,5 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery-readyselector
 //= require_tree .

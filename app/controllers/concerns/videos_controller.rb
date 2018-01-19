@@ -7,11 +7,10 @@ class VideosController < ApplicationController
     begin
       cloudinary = Cloudinary::Uploader.upload( params[:video][:file],
         :resource_type => :video,
-        :eager => [{
-          :format => "mp4",
-          :width => 640,
-          :crop => "limit",
-        }],
+        :eager => [
+          { :format => "mp4", :width => 640, :crop => "limit" },
+          { :format => "mp4", :width => 360, :crop => "limit" },
+        ],
         :eager_async => false, # TODO could have eager callback and do async?
       )
       # TODO also trim length
@@ -27,6 +26,7 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     @video.url = cloudinary["secure_url"]
     @video.transform_url = cloudinary["eager"][0]["secure_url"]
+    @video.transform_sml_url = cloudinary["eager"][1]["secure_url"]
     if @video.save
       redirect_to @video
     else

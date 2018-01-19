@@ -1,5 +1,13 @@
-<h1>this is the stage yo</h1>
+<div class="stage-container">
+  <h1>STAGE</h1>
 
-<video controls>
-  <source src="<%= @video.transform_url %>">
-</video>
+
+  <video id="stage-video" controls muted>
+    <source src="<%= @video.transform_sml_url %>">
+  </video>
+  <canvas id="stage-canvas"></canvas>
+  <canvas id="sim-canvas"></canvas>
+
+
+
+</div>
