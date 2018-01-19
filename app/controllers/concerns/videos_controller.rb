@@ -36,6 +36,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find params[:id]
+    session[:number] = @video.id # persisting in session hash to use in stage
   end
 
   private
