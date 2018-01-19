@@ -1,8 +1,10 @@
+let video;
+
 // only run this js on stage page ready
 $('.pages.stage').ready(function() {
   // using vanilla js from this point on to avoid vid/canvas perform issues
   // get video
-  const video = document.getElementById('stage-video');
+  video = document.getElementById('stage-video');
   let vw, vh;
   // get canvas contexts
   const stage = document.getElementById('stage-canvas');
@@ -31,7 +33,7 @@ $('.pages.stage').ready(function() {
     requestAnimationFrame( draw );
   };
 
-  // when video plays, draw to the canvases (canvii?)
+  // when video plays, draw to the canvases (canvi?)
   video.addEventListener('play', draw, false);
 
 
