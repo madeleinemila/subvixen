@@ -25,16 +25,7 @@ $('.pages.stage').ready(function() {
     const drawFixtures = function() {
       if (fixtures) {
         fixtures.forEach(function(f) {
-          const centerX = f.x;
-          const centerY = f.y;
-          const radius = 10;
-          stageCtx.beginPath();
-          stageCtx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-          stageCtx.fillStyle = 'white';
-          stageCtx.fill();
-          stageCtx.lineWidth = 5;
-          stageCtx.strokeStyle = '#222';
-          stageCtx.stroke();
+          drawCircle( f.x, f.y, 10, 'white', 5, '#222', stageCtx );
         });
       }
     };
@@ -43,14 +34,25 @@ $('.pages.stage').ready(function() {
         return;
       }
       stageCtx.drawImage(video, 0, 0, vw, vh);
-      simCtx.drawImage(video, 0, 0, vw, vh);
+      // simCtx.drawImage(video, 0, 0, vw, vh);
       drawFixtures(); // draw fixtures back over the top of video
       requestAnimationFrame( drawVideo );
     };
 
-    drawFixtures();
 
     // ******* FIXTURE CREATION *********
+
+    // circle helper function
+    const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) {
+        context.beginPath();
+        context.arc(x, y, r, 0, 2 * Math.PI, false);
+        context.fillStyle = fill;
+        context.fill();
+        context.lineWidth = strokeWidth;
+        context.strokeStyle = strokeColor;
+        context.stroke();
+    };
+
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
       fixtures.push({
@@ -58,6 +60,7 @@ $('.pages.stage').ready(function() {
         y: mousePos.y,
       });
       drawFixtures();
+      drawSim();
     });
 
 
@@ -66,8 +69,15 @@ $('.pages.stage').ready(function() {
 
 
 
-
-
+    // ****** SIM CREATION ***********
+    const drawSim = function() {
+      if (fixtures) {
+        fixtures.forEach(function(f) {
+          //test black circles
+          drawCircle( f.x, f.y, 10, 'black', 5, '#222', simCtx );
+        });
+      }
+    };
 
   }, false); // explicit false re useCapture for older browser compat
 
