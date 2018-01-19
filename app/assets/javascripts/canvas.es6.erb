@@ -21,40 +21,75 @@ $('.pages.stage').ready(function() {
     sim.width = vw;
     stage.height = vh;
     sim.height = vh;
+    // ****** FIXTURE DISPLAY (defining here for correct width/height values)
+    const drawFixtures = function() {
+      if (fixtures) {
+        fixtures.forEach(function(f) {
+          const centerX = f.x;
+          const centerY = f.y;
+          const radius = 10;
+          stageCtx.beginPath();
+          stageCtx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+          stageCtx.fillStyle = 'white';
+          stageCtx.fill();
+          stageCtx.lineWidth = 5;
+          stageCtx.strokeStyle = '#222';
+          stageCtx.stroke();
+        });
+      }
+    };
+    const drawVideo = function() {
+      if (video.paused || video.ended) {
+        return;
+      }
+      stageCtx.drawImage(video, 0, 0, vw, vh);
+      simCtx.drawImage(video, 0, 0, vw, vh);
+      drawFixtures(); // draw fixtures back over the top of video
+      requestAnimationFrame( drawVideo );
+    };
+
+    drawFixtures();
+
+    // ******* FIXTURE CREATION *********
+    stage.addEventListener('click', function(e) {
+      const mousePos = getMousePos( this, e );
+      fixtures.push({
+        x: mousePos.x,
+        y: mousePos.y,
+      });
+      drawFixtures();
+    });
+
+
+    // when video plays, draw to the canvases (canvi?)
+    video.addEventListener('play', drawVideo, false);
+
+
+
+
+
+
   }, false); // explicit false re useCapture for older browser compat
 
 
 
-  const draw = function() {
-    if (video.paused || video.ended) {
-      return;
-    }
-    stageCtx.drawImage(video, 0, 0, vw, vh);
-    simCtx.drawImage(video, 0, 0, vw, vh);
-    requestAnimationFrame( draw );
-  };
-
-  // when video plays, draw to the canvases (canvi?)
-  video.addEventListener('play', draw, false);
 
 
 
 
-  // ******* FIXTURE CREATION *********
-  stage.addEventListener('click', function(e) {
-    const mousePos = getMousePos( this, e );
-    fixtures.push({
-      x: mousePos.x,
-      y: mousePos.y,
-    });
-  });
+
+
+
 
 }); // end page ready
 
 
 
 
-// *** Helper functions ***
+// *** Component functions ***
+
+
+
 
 const getMousePos = function( canvas, event ) {
   const rect = canvas.getBoundingClientRect(); // to use clientX and clientY and normalize across browsers
