@@ -55,9 +55,11 @@ $('.pages.stage').ready(function() {
 
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
+      // TODO get rgb value at click
       fixtures.push({
         x: mousePos.x,
         y: mousePos.y,
+        color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
       });
       drawFixtures();
       drawSim();
@@ -74,7 +76,7 @@ $('.pages.stage').ready(function() {
       if (fixtures) {
         fixtures.forEach(function(f) {
           //test black circles
-          drawCircle( f.x, f.y, 10, 'black', 5, '#222', simCtx );
+          drawCircle( f.x, f.y, 10, f.color, 5, f.color, simCtx );
         });
       }
     };
@@ -96,14 +98,28 @@ $('.pages.stage').ready(function() {
 
 
 
-// *** Component functions ***
+// ******************** Component functions ***************************
 
 
-
+// ~~~ Fixture x & y from mouse click
 
 const getMousePos = function( canvas, event ) {
+  // console.log(event);
   const rect = canvas.getBoundingClientRect(); // to use clientX and clientY and normalize across browsers
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
   return { x, y };
 }
+
+
+// ~~~ Fixture color for pixel hex
+
+const hex = function( value ) {
+  const hex = value.toString(16);
+  return hex.length === 1 ? `0${hex}` : hex;
+};
+
+const getPixelHex = function( context, x, y ) {
+  const rgb = context.getImageData( x, y, 1, 1 );
+  return "#" + hex( rgb.data[0] ) + hex( rgb.data[1] ) + hex( rgb.data[2] );
+};
