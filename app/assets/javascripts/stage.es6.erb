@@ -25,7 +25,7 @@ $('.pages.stage').ready(function() {
     const drawFixtures = function() {
       if (fixtures) {
         fixtures.forEach(function(f) {
-          drawCircle( f.x, f.y, 10, 'white', 5, '#222', stageCtx );
+          drawCircle( f.x, f.y, 3, '#FFF0', 15, '#222', stageCtx );
         });
       }
     };
@@ -34,8 +34,8 @@ $('.pages.stage').ready(function() {
         return;
       }
       stageCtx.drawImage(video, 0, 0, vw, vh);
-      // simCtx.drawImage(video, 0, 0, vw, vh);
       drawFixtures(); // draw fixtures back over the top of video
+      drawSim();
       requestAnimationFrame( drawVideo );
     };
 
@@ -55,7 +55,6 @@ $('.pages.stage').ready(function() {
 
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
-      // TODO get rgb value at click
       fixtures.push({
         x: mousePos.x,
         y: mousePos.y,
@@ -75,7 +74,7 @@ $('.pages.stage').ready(function() {
     const drawSim = function() {
       if (fixtures) {
         fixtures.forEach(function(f) {
-          //test black circles
+          f.color = getPixelHex( stageCtx, f.x, f.y );
           drawCircle( f.x, f.y, 10, f.color, 5, f.color, simCtx );
         });
       }
