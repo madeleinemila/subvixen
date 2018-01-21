@@ -79,7 +79,18 @@ $width-canvas: 360px;
   .code-display {
     background-color: rgba( $off-white, 0.1 );
     min-height: $height-stage-component - $padding-main;
+    padding: 1rem;
   }
 
 
 } // end stage-container
+
+
+
+
+.code {
+  font-family: Inconsolata, monospace;
+  color: $off-white;
+  // opacity: 0;
+  // transition: opacity 1s ease;
+}

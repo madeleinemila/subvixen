@@ -1,0 +1,38 @@
+let lutString = "";
+
+
+const hexToRGB = function( hex ) {
+  const red = +("0x" + hex.slice(1, 3));
+  const green = +("0x" + hex.slice(3, 5));
+  const blue = +("0x" + hex.slice(5, 7));
+  return "{" + red + ", " + green + ", " + blue + "}";
+};
+
+
+
+const stringifyLUT = function() {
+  lutString = ""; // reinit to empty string
+  lut.forEach((fixture) => {
+    console.log(fixture);
+    fixture.forEach((pixel) => {
+      // start with a {
+      let pixelString = "{";
+      // convert hex to comma-sep rgb w spaces
+
+    });
+  });
+
+};
+
+
+
+
+
+
+const displayLUT = function() {
+  $('#lut').empty(); // clear previous code
+  const lutNode = $(`<p class=code>${ lutString }</p>`).hide().fadeIn(1000);
+  lutNode.appendTo('#lut');
+
+
+};

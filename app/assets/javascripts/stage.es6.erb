@@ -1,7 +1,7 @@
 let video, stage, stageCtx, sim, simCtx, vw, vh, numFrames;
 let prevTime = 0; // for generating at set intervals
 const fixtures = [];
-const lookup = [];
+const lut = [];
 
 
 // only run this js on stage page ready
@@ -53,8 +53,8 @@ $('.pages.stage').ready(function() {
         y: mousePos.y,
         color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
       });
-      // n.b. also add empty array elem to lookup at this point
-      lookup.push( new Array(1) );
+      // n.b. also add empty array elem to LUT at this point
+      lut.push( new Array(1) );
       drawFixtures();
       drawSim();
       fixtureLog();
@@ -128,7 +128,7 @@ const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
     prevTime = 0;
-    console.log( lookup );
+    console.log( lut );
     return;
   }
   if (gen) {
@@ -136,7 +136,7 @@ const drawVideo = function() {
     //   if (fixtures.length > 0) {
     //     fixtures.forEach(function(f, i) {
     //       const pixel = getPixelHex( stageCtx, f.x, f.y );
-    //       lookup[i].push( pixel );
+    //       lut[i].push( pixel );
     //     });
     //   }
     //
