@@ -2,8 +2,7 @@
 
   <div class="stage-main">
     <h2>STAGE</h2>
-    <video id="stage-video" muted crossOrigin="anonymous">
-      <!-- TODO add poster frame -->
+    <video id="stage-video" muted crossOrigin="anonymous" playsinline>
       <source src="<%= @video.transform_sml_url %>">
     </video>
     <canvas id="stage-canvas"></canvas>

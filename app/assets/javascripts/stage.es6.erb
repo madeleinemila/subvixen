@@ -24,12 +24,18 @@ $('.pages.stage').ready(function() {
     stage.height = vh;
     sim.height = vh;
     numFrames = video.duration / frameInterval;
-    // show first frame
-    video.play();
-    setTimeout(function() {
-      video.pause();
-      video.currentTime = 0;
-    }, 100 );
+    // show a frame to start with
+    // video.play();
+    // setTimeout(function() {
+    //   video.pause();
+    //   video.currentTime = 0;
+    //   // drawNewStageFrame();  // CHANGED
+    //   $('#stage-canvas').on('timeupdate', () => {
+    //     drawNewStageFrame();
+    //   });
+    // }, 200 ); // CHANGED from 100
+    video.currentTime = 0;
+    setTimeout(drawNewStageFrame, 300);
 
 
     // ******* FIXTURE CREATION *********
