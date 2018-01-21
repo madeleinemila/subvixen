@@ -1,10 +1,12 @@
 let gen = false;
 const frameInterval = 0.04; // 25fp, 40ms
+let frame = 1;
 
-$(document).ready(function() {
+$('.pages.stage').ready(function() {
 
   // when generate button is clicked
   $('#generate').on('click', function() {
+    if (fixtures.length === 0) return;
     console.log(`Starting pixel generation...`);
     // clear previous lookup values
     lookup.forEach((arr) => {
@@ -18,9 +20,6 @@ $(document).ready(function() {
     video.currentTime = 0;
     // flag for generation active
     gen = true;
-    // start the video
-    // video.play();
-    generateLookup();
   });
 
   // notice for debugging
@@ -29,11 +28,39 @@ $(document).ready(function() {
   });
 
 
+
+  $('#stage-video').on('timeupdate', function() {
+    if (!gen) return; // ** code below only to run if generate was clicked
+
+    // draw new frame
+    drawNewStageFrame();
+    simCtx.clearRect(0, 0, vw, vh); // clear previous canvas to avoid aliasing
+    drawSim();
+
+    // update lookup table
+    fixtures.forEach(function(f, i) {
+      const pixel = getPixelHex( stageCtx, f.x, f.y );
+      lookup[i].push( pixel );
+    });
+
+    // move to next frame
+    video.currentTime += frameInterval;
+    frame++;
+
+    if (frame > numFrames) {
+      console.log( 'Finished generating lookup table' );
+      frame = 1; // reset frame counter
+      drawFixtures(); // draw fixture icons back over
+      video.currentTime = video.duration; // make sure video parks right at end in case durn wasnt evenly divis by interval
+      gen = false;
+    }
+
+  });
+
 });
 
 
 
-const generateLookup = function() {
-  const numFrames = video.duration / frameInterval;
-  console.log( numFrames );
-};
+
+
+//**

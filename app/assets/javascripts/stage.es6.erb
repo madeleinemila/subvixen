@@ -1,4 +1,4 @@
-let video, stage, stageCtx, sim, simCtx, vw, vh;
+let video, stage, stageCtx, sim, simCtx, vw, vh, numFrames;
 let prevTime = 0; // for generating at set intervals
 const fixtures = [];
 const lookup = [];
@@ -23,6 +23,7 @@ $('.pages.stage').ready(function() {
     sim.width = vw;
     stage.height = vh;
     sim.height = vh;
+    numFrames = video.duration / frameInterval;
     // show first frame
     video.play();
     setTimeout(function() {
@@ -89,6 +90,8 @@ $('.pages.stage').ready(function() {
 // ******************** Component functions ***************************
 
 
+
+
 // circle helper function
 const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) {
     context.beginPath();
@@ -129,16 +132,16 @@ const drawVideo = function() {
     return;
   }
   if (gen) {
-    if (video.currentTime - prevTime >= 0.03315) { // 25fps with extra for computation time TODO change method so video steps through at exactly 40ms
-      if (fixtures.length > 0) {
-        fixtures.forEach(function(f, i) {
-          const pixel = getPixelHex( stageCtx, f.x, f.y );
-          lookup[i].push( pixel );
-        });
-      }
-
-      prevTime = video.currentTime;
-    }
+    // if (video.currentTime - prevTime >= 0.03315) { // 25fps with extra for computation time TODO change method so video steps through at exactly 40ms
+    //   if (fixtures.length > 0) {
+    //     fixtures.forEach(function(f, i) {
+    //       const pixel = getPixelHex( stageCtx, f.x, f.y );
+    //       lookup[i].push( pixel );
+    //     });
+    //   }
+    //
+    //   prevTime = video.currentTime;
+    // }
   }
   drawNewStageFrame(); // draws new frame of video to stage canvas
   drawFixtures(); // draw fixtures back over the top of video
@@ -146,7 +149,6 @@ const drawVideo = function() {
   drawSim(); // draw fixtures back into sim
   requestAnimationFrame( drawVideo );
 };
-
 
 
 
