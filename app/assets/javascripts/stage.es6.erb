@@ -114,6 +114,7 @@ const drawFixtures = function() {
 
 const drawVideo = function() {
   if (video.paused || video.ended) {
+    gen = false; // reset gen flag if nec
     return;
   }
   if (gen) {

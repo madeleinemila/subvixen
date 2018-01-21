@@ -14,24 +14,13 @@ $(document).ready(function() {
     // flag for generation active
     gen = true;
     // start the video
-    video.play(); // TODO should only advance video 40ms...
+    video.play();
   });
 
-
-  // $('#stage-video').on('play', function() {
-  //   if (gen) {
-  //     console.log(`gen playing`);
-  //   }
-  // });
-
+  // notice for debugging
   $('#stage-video').on('ended', function() {
     console.log( `Video has ended` );
   });
 
 
 });
-
-
-const recordPixel = function() {
-  console.log( `recording pixels` );
-};
