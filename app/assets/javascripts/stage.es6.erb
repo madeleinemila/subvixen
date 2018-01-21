@@ -47,7 +47,7 @@ $('.pages.stage').ready(function() {
         $('#fixtures-main').empty();
         for (let i = 0; i < fixtures.length; i++) {
           const f = fixtures[i];
-          const node = $(`<p>${ i + 1 }. ${ f.x }, ${ f.y }</p>`);
+          const node = $(`<p>No. <input class="f-param" value="${ i + 1 }" /> x: <input class="f-param" value="${ f.x }"/> y: <input class="f-param" value="${ f.y }"/>`);
           node.appendTo( "#fixtures-main" );
         }
     };
