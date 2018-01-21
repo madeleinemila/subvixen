@@ -4,6 +4,10 @@ $(document).ready(function() {
   // when generate button is clicked
   $('#generate').on('click', function() {
     console.log(`Starting pixel generation...`);
+    // clear previous lookup values
+    lookup.forEach((arr) => {
+      arr.length = 0;
+    });
     // set video to not looping
     video.loop = false;
     $('#loop').removeClass( "on" );
