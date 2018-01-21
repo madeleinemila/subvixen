@@ -52,6 +52,8 @@ $('.pages.stage').ready(function() {
         y: mousePos.y,
         color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
       });
+      // n.b. also add empty array elem to lookup at this point
+      lookup.push( new Array(1) );
       drawFixtures();
       drawSim();
       fixtureLog();
@@ -119,6 +121,7 @@ const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
     prevTime = 0;
+    console.log( lookup );
     return;
   }
   if (gen) {
@@ -126,7 +129,7 @@ const drawVideo = function() {
       if (fixtures.length > 0) {
         fixtures.forEach(function(f, i) {
           const pixel = getPixelHex( stageCtx, f.x, f.y );
-          console.log( i, pixel );
+          lookup[i].push( pixel );
         });
       }
 
