@@ -1,5 +1,8 @@
 let video, stage, stageCtx, sim, simCtx, vw, vh;
+let prevTime = 0; // for generating at set intervals
 const fixtures = [];
+const lookup = [];
+
 
 // only run this js on stage page ready
 $('.pages.stage').ready(function() {
@@ -96,7 +99,7 @@ const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) 
 };
 
 const drawSim = function() {
-  if (fixtures) {
+  if (fixtures.length > 0) {
     fixtures.forEach(function(f) {
       f.color = getPixelHex( stageCtx, f.x, f.y );
       drawCircle( f.x, f.y, 10, f.color, 5, f.color, simCtx );
@@ -105,7 +108,7 @@ const drawSim = function() {
 };
 
 const drawFixtures = function() {
-  if (fixtures) {
+  if (fixtures.length > 0) {
     fixtures.forEach(function(f) {
       drawCircle( f.x, f.y, 3, '#FFF0', 15, '#222', stageCtx );
     });
@@ -115,10 +118,20 @@ const drawFixtures = function() {
 const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
+    prevTime = 0;
     return;
   }
   if (gen) {
-    console.log( `RECORDING` );
+    if (video.currentTime - prevTime >= 0.04) { // 25fps
+      if (fixtures.length > 0) {
+        fixtures.forEach(function(f, i) {
+          const pixel = getPixelHex( stageCtx, f.x, f.y );
+          console.log( i, pixel );
+        });
+      }
+
+      prevTime = video.currentTime;
+    }
   }
   stageCtx.drawImage(video, 0, 0, vw, vh); // draw new video frame
   drawFixtures(); // draw fixtures back over the top of video
