@@ -3,6 +3,7 @@
 
 $off-white: #fdfdfd;
 $dark-grey: #292929;
+$highlight: #FFE29D;
 
 
 * {
@@ -25,4 +26,9 @@ button {
   margin: 1rem 0;
   text-transform: uppercase;
   background-color: $off-white;
+}
+
+
+.on {
+  color: $highlight !important;
 }
