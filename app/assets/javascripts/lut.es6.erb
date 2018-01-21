@@ -24,7 +24,7 @@ const stringifyLUT = function() {
       }
       lutString += hexToRGB( pixel );
       if (i % fps === ( fps - 1 ) && i !== 0) {
-        lutString += `<br />&nbsp;&nbsp;<span class="comment">// ${ i / 25 }s elapsed</span><br />&nbsp;&nbsp;`;
+        lutString += `<br />&nbsp;&nbsp;<span class="comment">// ${ (i + 1) / 25 }s elapsed</span><br />&nbsp;&nbsp;`;
       }
     });
 
