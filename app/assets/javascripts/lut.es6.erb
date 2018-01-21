@@ -13,7 +13,16 @@ const hexToRGB = function( hex ) {
 
 
 const stringifyLUT = function() {
-  lutString = "const uint8_t fx[totalFixtures][totalFrames][3] PROGMEM = {<br />"; // reinit to starting string
+  // reinit string to empty
+  lutString = "";
+
+  // add decl for total fixtures and total frames
+  lutString += `const uint16_t totalFixtures = ${ lut.length };<br />`
+  lutString += `const uint16_t totalFrames = ${ lut[0].length };<br />`;
+  lutString += `<br />`;
+  // begin pixel print
+  lutString += "const uint8_t fx[totalFixtures][totalFrames][3] PROGMEM = {<br /><br />";
+
   lut.forEach((fixture, i) => {
     lutString += `&nbsp;<span class="comment">// fixture ${ i + 1 }</span><br />&nbsp;{`;
 
@@ -29,7 +38,7 @@ const stringifyLUT = function() {
     });
 
 
-    lutString += "<br />&nbsp;},<br />";
+    lutString += "<br />&nbsp;},<br /><br />";
   });
   lutString += "};";
 };
