@@ -4,7 +4,7 @@
 
 $height-stage-component: 900px;
 $height-button: 2rem;
-$padding-main: 2rem;
+$padding-main: 32px;
 $width-canvas: 360px;
 
 
@@ -23,7 +23,7 @@ $width-canvas: 360px;
     flex: 1;
     display: inline-block;
     min-height: $height-stage-component;
-    padding: $padding-main;
+    padding: 0 $padding-main 2rem $padding-main;
   }
 
   video {
@@ -72,14 +72,13 @@ $width-canvas: 360px;
   /////////////////////////////////////////////////
 
   .code-main {
-    display: inline-block;
-    flex: 1;
-    min-height: $height-stage-component;
+    @extend .stage-main;
   }
 
 
   .code-display {
-
+    background-color: rgba( $off-white, 0.1 );
+    min-height: $height-stage-component - $padding-main;
   }
 
 

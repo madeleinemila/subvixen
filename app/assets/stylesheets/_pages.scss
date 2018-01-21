@@ -13,11 +13,21 @@ $highlight: #FFE29D;
 
 body {
   font-family: Avenir, sans-serif;
+  // font-family: Inconsolata, sans-serif;
   font-size: 16px;
   background-color: $dark-grey;
   color: $off-white;
+  letter-spacing: 2px;
 }
 
+h1 {
+  font-weight: normal;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 1.25rem;
+}
 
 
 button {
