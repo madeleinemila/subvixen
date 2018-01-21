@@ -17,12 +17,17 @@ const stringifyLUT = function() {
   lut.forEach((fixture, i) => {
     lutString += `&nbsp;<span class="comment">// fixture ${ i + 1 }</span><br />&nbsp;{`;
 
+
     fixture.forEach((pixel, i) => {
       if (i % pixelsPerLine === 0) {
         lutString += "<br />&nbsp;&nbsp;";
       }
       lutString += hexToRGB( pixel );
+      if (i % fps === ( fps - 1 ) && i !== 0) {
+        lutString += `<br />&nbsp;&nbsp;<span class="comment">// ${ i / 25 }s elapsed</span><br />&nbsp;&nbsp;`;
+      }
     });
+
 
     lutString += "<br />&nbsp;},<br />";
   });

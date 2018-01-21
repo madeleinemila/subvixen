@@ -1,5 +1,6 @@
 let gen = false;
-const frameInterval = 0.04; // 25fp, 40ms
+const fps = 25;
+const frameInterval = 1 / fps; // 25fps, 40ms
 let frame = 1;
 
 $('.pages.stage').ready(function() {
