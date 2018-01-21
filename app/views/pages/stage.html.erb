@@ -1,12 +1,25 @@
 <div class="stage-container">
-  <h1>STAGE</h1>
+
+  <div class="stage-main">
+    <h1>STAGE</h1>
+    <video id="stage-video" muted autoplay loop crossOrigin="anonymous">
+      <source src="<%= @video.transform_sml_url %>">
+    </video>
+    <canvas id="stage-canvas"></canvas>
+    <div class="video-controls">
+        <button class="transport">PLAY</button>
+        <button class="transport">PAUSE</button>
+        <button class="transport">LOOP</button>
+    </div>
+    <button class="button-lge">Generate</button>
+    <canvas id="sim-canvas"></canvas>
+  </div>
 
 
-  <video id="stage-video" muted autoplay loop crossOrigin="anonymous">
-    <source src="<%= @video.transform_sml_url %>">
-  </video>
-  <canvas id="stage-canvas"></canvas>
-  <canvas id="sim-canvas"></canvas>
+  <div class="code-main">
+    <div class="code-display">
 
+    </div>
+  </div>
 
 </div>
