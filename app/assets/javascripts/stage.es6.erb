@@ -117,6 +117,10 @@ const drawFixtures = function() {
   }
 };
 
+const drawNewStageFrame = function() {
+  stageCtx.drawImage(video, 0, 0, vw, vh);
+};
+
 const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
@@ -136,7 +140,7 @@ const drawVideo = function() {
       prevTime = video.currentTime;
     }
   }
-  stageCtx.drawImage(video, 0, 0, vw, vh); // draw new video frame
+  drawNewStageFrame(); // draws new frame of video to stage canvas
   drawFixtures(); // draw fixtures back over the top of video
   simCtx.clearRect(0, 0, vw, vh); // clear previous sim canvas to avoid aliasing
   drawSim(); // draw fixtures back into sim

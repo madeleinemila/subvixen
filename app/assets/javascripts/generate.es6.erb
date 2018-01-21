@@ -1,6 +1,8 @@
 let gen = false;
+const frameInterval = 0.04; // 25fp, 40ms
 
 $(document).ready(function() {
+
   // when generate button is clicked
   $('#generate').on('click', function() {
     console.log(`Starting pixel generation...`);
@@ -17,7 +19,8 @@ $(document).ready(function() {
     // flag for generation active
     gen = true;
     // start the video
-    video.play();
+    // video.play();
+    generateLookup();
   });
 
   // notice for debugging
@@ -27,3 +30,10 @@ $(document).ready(function() {
 
 
 });
+
+
+
+const generateLookup = function() {
+  const numFrames = video.duration / frameInterval;
+  console.log( numFrames );
+};
