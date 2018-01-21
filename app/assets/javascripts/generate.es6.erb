@@ -23,12 +23,6 @@ $('.pages.stage').ready(function() {
     gen = true;
   });
 
-  // notice for debugging
-  $('#stage-video').on('ended', function() {
-    console.log( `Video has ended` );
-  });
-
-
 
   $('#stage-video').on('timeupdate', function() {
     if (!gen) return; // ** code below only to run if generate was clicked

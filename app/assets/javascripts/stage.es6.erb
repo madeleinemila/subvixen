@@ -1,5 +1,5 @@
 let video, stage, stageCtx, sim, simCtx, vw, vh, numFrames;
-let prevTime = 0; // for generating at set intervals
+// let prevTime = 0; // for generating at set intervals
 const fixtures = [];
 const lut = [];
 
@@ -127,21 +127,8 @@ const drawNewStageFrame = function() {
 const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
-    prevTime = 0;
-    console.log( lut );
+    // prevTime = 0;
     return;
-  }
-  if (gen) {
-    // if (video.currentTime - prevTime >= 0.03315) { // 25fps with extra for computation time TODO change method so video steps through at exactly 40ms
-    //   if (fixtures.length > 0) {
-    //     fixtures.forEach(function(f, i) {
-    //       const pixel = getPixelHex( stageCtx, f.x, f.y );
-    //       lut[i].push( pixel );
-    //     });
-    //   }
-    //
-    //   prevTime = video.currentTime;
-    // }
   }
   drawNewStageFrame(); // draws new frame of video to stage canvas
   drawFixtures(); // draw fixtures back over the top of video
@@ -157,7 +144,6 @@ const drawVideo = function() {
 // ~~~ Fixture x & y from mouse click
 
 const getMousePos = function( canvas, event ) {
-  // console.log(event);
   const rect = canvas.getBoundingClientRect(); // to use clientX and clientY and normalize across browsers
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
