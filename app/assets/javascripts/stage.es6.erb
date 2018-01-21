@@ -125,7 +125,7 @@ const drawVideo = function() {
     return;
   }
   if (gen) {
-    if (video.currentTime - prevTime >= 0.04) { // 25fps
+    if (video.currentTime - prevTime >= 0.03315) { // 25fps with extra for computation time TODO change method so video steps through at exactly 40ms
       if (fixtures.length > 0) {
         fixtures.forEach(function(f, i) {
           const pixel = getPixelHex( stageCtx, f.x, f.y );
