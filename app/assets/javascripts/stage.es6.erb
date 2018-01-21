@@ -12,6 +12,7 @@ $('.pages.stage').ready(function() {
   const stageCtx = stage.getContext('2d');
   const sim = document.getElementById('sim-canvas');
   const simCtx = sim.getContext('2d');
+  // simCtx.webkitImageSmoothingEnabled=true;
 
   // when video metadata is available
   video.addEventListener('loadedmetadata', function() {
@@ -33,9 +34,10 @@ $('.pages.stage').ready(function() {
       if (video.paused || video.ended) {
         return;
       }
-      stageCtx.drawImage(video, 0, 0, vw, vh);
+      stageCtx.drawImage(video, 0, 0, vw, vh); // draw new video frame
       drawFixtures(); // draw fixtures back over the top of video
-      drawSim();
+      simCtx.clearRect(0, 0, vw, vh); // clear previous sim canvas to avoid aliasing
+      drawSim(); // draw fixtures back into sim
       requestAnimationFrame( drawVideo );
     };
 
@@ -45,7 +47,7 @@ $('.pages.stage').ready(function() {
     // circle helper function
     const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) {
         context.beginPath();
-        context.arc(x, y, r, 0, 2 * Math.PI, false);
+        context.arc(x, y, r, 0, 2 * Math.PI, true);
         context.fillStyle = fill;
         context.fill();
         context.lineWidth = strokeWidth;
