@@ -2,14 +2,15 @@
 
   <div class="stage-main">
     <h1>STAGE</h1>
-    <video id="stage-video" muted autoplay loop crossOrigin="anonymous">
+    <video id="stage-video" muted crossOrigin="anonymous">
+      <!-- TODO add poster frame -->
       <source src="<%= @video.transform_sml_url %>">
     </video>
     <canvas id="stage-canvas"></canvas>
     <div class="video-controls">
-        <button class="transport">PLAY</button>
-        <button class="transport">PAUSE</button>
-        <button class="transport">LOOP</button>
+        <button class="transport" id="play">PLAY</button>
+        <button class="transport" id="pause">PAUSE</button>
+        <button class="transport" id="loop">LOOP</button>
     </div>
     <button class="button-lge">Generate</button>
     <canvas id="sim-canvas"></canvas>

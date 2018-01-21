@@ -32,7 +32,7 @@ $width-canvas: 360px;
 
   .video-controls{
     min-height: $height-button;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
     width: $width-canvas;
   }
 
@@ -40,6 +40,7 @@ $width-canvas: 360px;
     display: block;
     width: $width-canvas;
     margin-top: 1rem;
+    background-color: black;
   }
 
 
@@ -53,7 +54,7 @@ $width-canvas: 360px;
   button.transport {
     @extend button;
     margin: 0.5rem;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     color: $off-white;
   }
 

@@ -1,0 +1,16 @@
+$(document).ready(function() {
+
+    $('#play').on('click', function() {
+      video.play();
+    });
+
+    $('#pause').on('click', function() {
+      video.pause();
+    });
+
+    $('#loop').on('click', function() {
+      video.loop ? video.loop = false : video.loop = true;
+    });
+
+
+});
