@@ -13,7 +13,7 @@ $width-canvas: 360px;
 /////////////////////////////////////////////////
 
 .stage-container {
-  max-width: 960px;
+  max-width: 1200px; // TODO change back to 960 and make expanding arrow for code
   margin: 0 auto;
   display: flex;
 
@@ -73,6 +73,7 @@ $width-canvas: 360px;
 
   .code-main {
     @extend .stage-main;
+    flex: 3;
   }
 
 
@@ -90,7 +91,12 @@ $width-canvas: 360px;
 
 .code {
   font-family: Inconsolata, monospace;
+  font-size: 0.8rem;
   color: $off-white;
   // opacity: 0;
   // transition: opacity 1s ease;
+}
+
+.comment {
+  color: $highlight;
 }

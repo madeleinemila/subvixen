@@ -1,27 +1,32 @@
 let lutString = "";
+const pixelsPerLine = 5;
+// let pixelCount = 0;
 
 
 const hexToRGB = function( hex ) {
   const red = +("0x" + hex.slice(1, 3));
   const green = +("0x" + hex.slice(3, 5));
   const blue = +("0x" + hex.slice(5, 7));
-  return "{" + red + ", " + green + ", " + blue + "}";
+  return "{" + red + ", " + green + ", " + blue + "}, ";
 };
 
 
 
 const stringifyLUT = function() {
-  lutString = ""; // reinit to empty string
-  lut.forEach((fixture) => {
-    console.log(fixture);
-    fixture.forEach((pixel) => {
-      // start with a {
-      let pixelString = "{";
-      // convert hex to comma-sep rgb w spaces
+  lutString = "const uint8_t fx[totalFixtures][totalFrames][3] PROGMEM = {<br />"; // reinit to starting string
+  lut.forEach((fixture, i) => {
+    lutString += `&nbsp;<span class="comment">// fixture ${ i + 1 }</span><br />&nbsp;{`;
 
+    fixture.forEach((pixel, i) => {
+      if (i % pixelsPerLine === 0) {
+        lutString += "<br />&nbsp;&nbsp;";
+      }
+      lutString += hexToRGB( pixel );
     });
-  });
 
+    lutString += "<br />&nbsp;},<br />";
+  });
+  lutString += "};";
 };
 
 
