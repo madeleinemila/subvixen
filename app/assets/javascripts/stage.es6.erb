@@ -1,4 +1,4 @@
-let video;
+let video, stage, stageCtx, sim, simCtx, vw, vh;
 const fixtures = [];
 
 // only run this js on stage page ready
@@ -6,13 +6,11 @@ $('.pages.stage').ready(function() {
   // using vanilla js from this point on to avoid vid/canvas perform issues
   // get video
   video = document.getElementById('stage-video');
-  let vw, vh;
   // get canvas contexts
-  const stage = document.getElementById('stage-canvas');
-  const stageCtx = stage.getContext('2d');
-  const sim = document.getElementById('sim-canvas');
-  const simCtx = sim.getContext('2d');
-  // simCtx.webkitImageSmoothingEnabled=true;
+  stage = document.getElementById('stage-canvas');
+  stageCtx = stage.getContext('2d');
+  sim = document.getElementById('sim-canvas');
+  simCtx = sim.getContext('2d');
 
   // when video metadata is available
   video.addEventListener('loadedmetadata', function() {
@@ -22,37 +20,26 @@ $('.pages.stage').ready(function() {
     sim.width = vw;
     stage.height = vh;
     sim.height = vh;
-    // ****** FIXTURE DISPLAY (defining here for correct width/height values)
-    const drawFixtures = function() {
-      if (fixtures) {
-        fixtures.forEach(function(f) {
-          drawCircle( f.x, f.y, 3, '#FFF0', 15, '#222', stageCtx );
-        });
-      }
-    };
-    const drawVideo = function() {
-      if (video.paused || video.ended) {
-        return;
-      }
-      stageCtx.drawImage(video, 0, 0, vw, vh); // draw new video frame
-      drawFixtures(); // draw fixtures back over the top of video
-      simCtx.clearRect(0, 0, vw, vh); // clear previous sim canvas to avoid aliasing
-      drawSim(); // draw fixtures back into sim
-      requestAnimationFrame( drawVideo );
-    };
+    // show first frame
+    video.play();
+    setTimeout(function() {
+      video.pause();
+      video.currentTime = 0;
+    }, 100 );
 
 
     // ******* FIXTURE CREATION *********
 
-    // circle helper function
-    const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) {
-        context.beginPath();
-        context.arc(x, y, r, 0, 2 * Math.PI, true);
-        context.fillStyle = fill;
-        context.fill();
-        context.lineWidth = strokeWidth;
-        context.strokeStyle = strokeColor;
-        context.stroke();
+
+
+    // fixture log helper
+    const fixtureLog = function() {
+        $('#fixtures-main').empty();
+        for (let i = 0; i < fixtures.length; i++) {
+          const f = fixtures[i];
+          const node = $(`<p>${ i + 1 }. ${ f.x }, ${ f.y }</p>`);
+          node.appendTo( "#fixtures-main" );
+        }
     };
 
     stage.addEventListener('click', function(e) {
@@ -64,6 +51,7 @@ $('.pages.stage').ready(function() {
       });
       drawFixtures();
       drawSim();
+      fixtureLog();
     });
 
 
@@ -72,15 +60,7 @@ $('.pages.stage').ready(function() {
 
 
 
-    // ****** SIM CREATION ***********
-    const drawSim = function() {
-      if (fixtures) {
-        fixtures.forEach(function(f) {
-          f.color = getPixelHex( stageCtx, f.x, f.y );
-          drawCircle( f.x, f.y, 10, f.color, 5, f.color, simCtx );
-        });
-      }
-    };
+
 
   }, false); // explicit false re useCapture for older browser compat
 
@@ -99,7 +79,56 @@ $('.pages.stage').ready(function() {
 
 
 
+
+
 // ******************** Component functions ***************************
+
+
+// circle helper function
+const drawCircle = function( x, y, r, fill, strokeWidth, strokeColor, context ) {
+    context.beginPath();
+    context.arc(x, y, r, 0, 2 * Math.PI, true);
+    context.fillStyle = fill;
+    context.fill();
+    context.lineWidth = strokeWidth;
+    context.strokeStyle = strokeColor;
+    context.stroke();
+};
+
+const drawSim = function() {
+  if (fixtures) {
+    fixtures.forEach(function(f) {
+      f.color = getPixelHex( stageCtx, f.x, f.y );
+      drawCircle( f.x, f.y, 10, f.color, 5, f.color, simCtx );
+    });
+  }
+};
+
+const drawFixtures = function() {
+  if (fixtures) {
+    fixtures.forEach(function(f) {
+      drawCircle( f.x, f.y, 3, '#FFF0', 15, '#222', stageCtx );
+    });
+  }
+};
+
+const drawVideo = function() {
+  if (video.paused || video.ended) {
+    return;
+  }
+  if (gen) {
+    console.log( `RECORDING` );
+  }
+  stageCtx.drawImage(video, 0, 0, vw, vh); // draw new video frame
+  drawFixtures(); // draw fixtures back over the top of video
+  simCtx.clearRect(0, 0, vw, vh); // clear previous sim canvas to avoid aliasing
+  drawSim(); // draw fixtures back into sim
+  requestAnimationFrame( drawVideo );
+};
+
+
+
+
 
 
 // ~~~ Fixture x & y from mouse click

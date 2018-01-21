@@ -1,0 +1,37 @@
+const lookup = [];
+let gen = false;
+
+$(document).ready(function() {
+  // when generate button is clicked
+  $('#generate').on('click', function() {
+    console.log(`Starting pixel generation...`);
+    // set video to not looping
+    video.loop = false;
+    $('#loop').removeClass( "on" );
+    // cue video to head TODO could split out into a function in transport file
+    video.pause(); // in case already playing
+    video.currentTime = 0;
+    // flag for generation active
+    gen = true;
+    // start the video
+    video.play(); // TODO should only advance video 40ms...
+  });
+
+
+  // $('#stage-video').on('play', function() {
+  //   if (gen) {
+  //     console.log(`gen playing`);
+  //   }
+  // });
+
+  $('#stage-video').on('ended', function() {
+    console.log( `Video has ended` );
+  });
+
+
+});
+
+
+const recordPixel = function() {
+  console.log( `recording pixels` );
+};
