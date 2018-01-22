@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
+  const getFixtureId = function( node ) {
+    return node.parent().attr('id').slice(2);
+  }
+
   $('body').on('change', '.f-param', function() {
       // get fixture index from parent <p>
-      const id = $(this).parent().attr('id').slice(2);
+      // const id = $(this).parent().attr('id').slice(2);
+      const id = getFixtureId( $(this) );
       // get which property this input relates to
       const prop = $(this).data('prop');
       // cache value
@@ -41,10 +46,28 @@ $(document).ready(function() {
         default:
           console.log( `Invalid property data` );
       }
-      drawFixtures();
-      simCtx.clearRect(0, 0, vw, vh); // TODO this repeats, could refactor
-      drawSim();
+      // drawFixtures();
+      // simCtx.clearRect(0, 0, vw, vh);
+      // drawSim();
+      refresh();
+  });  // end on change input
+
+
+
+  $('body').on('click', '.f-delete', function() {
+      const id = getFixtureId( $(this) );
+      fixtures.splice( id, 1 )  // !! mutating
+      // remove a placeholder in LUT
+      lut.pop();
+      // console.log( fixtures );
+      fixtureLog();
+      refresh();
   });
 
-
 }); // end doc ready
+
+const refresh = function() { // TODO might be other occurrences that could be refactored
+    drawFixtures();
+    simCtx.clearRect(0, 0, vw, vh);
+    drawSim();
+};

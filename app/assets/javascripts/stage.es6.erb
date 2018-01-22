@@ -41,20 +41,6 @@ $('.pages.stage').ready(function() {
     // ******* FIXTURE CREATION *********
 
 
-
-    // fixture log helper
-    const fixtureLog = function() {
-        $('#fixtures-main').empty();
-        for (let i = 0; i < fixtures.length; i++) {
-          const f = fixtures[i];
-          const node =
-            $(`<p id="f-${ i }"># <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos"/>
-            x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" min="0" max="${ vw - 1 }"/>
-            y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" min="0" max="${ vh - 1 }"/>`);
-          node.appendTo( "#fixtures-main" );
-        }
-    };
-
     // FYI, 'shape' of fixture object
     // x, y, color, posNum, i.e. position in user's hardware circuit
 
@@ -177,4 +163,20 @@ const hex = function( value ) {
 const getPixelHex = function( context, x, y ) {
   const rgb = context.getImageData( x, y, 1, 1 );
   return "#" + hex( rgb.data[0] ) + hex( rgb.data[1] ) + hex( rgb.data[2] );
+};
+
+
+// fixture log helper
+const fixtureLog = function() {
+    $('#fixtures-main').empty();
+    for (let i = 0; i < fixtures.length; i++) {
+      const f = fixtures[i];
+      const node =
+        $(`<p id="f-${ i }"># <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos"/>
+        x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" min="0" max="${ vw - 1 }"/>
+        y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" min="0" max="${ vh - 1 }"/>
+        <button class="f-delete">&times;</button>
+        </p>`);
+      node.appendTo( "#fixtures-main" );
+    }
 };
