@@ -47,18 +47,24 @@ $('.pages.stage').ready(function() {
         $('#fixtures-main').empty();
         for (let i = 0; i < fixtures.length; i++) {
           const f = fixtures[i];
-          const node = $(`<p>No. <input class="f-param" value="${ i + 1 }" /> x: <input class="f-param" value="${ f.x }"/> y: <input class="f-param" value="${ f.y }"/>`);
+          const node = $(`<p># <input class="f-param" value="${ f.posNum }" /> x: <input class="f-param" value="${ f.x }"/> y: <input class="f-param" value="${ f.y }"/>`);
           node.appendTo( "#fixtures-main" );
         }
     };
 
+    // FYI, 'shape' of fixture object
+    // x, y, color, posNum, i.e. position in user's hardware circuit
+
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
       fixtures.push({
-        x: mousePos.x,
-        y: mousePos.y,
+        x: Math.round( mousePos.x ),
+        y: Math.round( mousePos.y ),
         color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
       });
+      // add a temp position number based on array position
+      _(fixtures).last().posNum = fixtures.length;
+      console.log( _(fixtures).last() );
       // n.b. also add empty array elem to LUT at this point
       lut.push( new Array(1) );
       drawFixtures();

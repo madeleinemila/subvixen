@@ -105,4 +105,12 @@ $width-canvas: 360px;
 .f-param {
   max-width: 4rem;
   margin-right: 1rem;
+  background-color: $dark-grey;
+  color: $off-white;
+  border: 1px solid lighten( $dark-grey, 10% );
+}
+
+.f-param:focus {
+  background-color: $off-white;
+  color: $dark-grey;
 }
