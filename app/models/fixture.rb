@@ -3,7 +3,6 @@
 # Table name: fixtures
 #
 #  id              :integer          not null, primary key
-#  name            :text
 #  x               :integer
 #  y               :integer
 #  position_number :integer

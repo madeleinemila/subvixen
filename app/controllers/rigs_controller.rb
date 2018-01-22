@@ -4,4 +4,8 @@ class RigsController < ApplicationController
     @fixture = Fixture.new
   end
 
+  def index
+    @rigs = Rig.all
+  end
+
 end

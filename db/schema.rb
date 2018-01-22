@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122101750) do
+ActiveRecord::Schema.define(version: 20180122123654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fixtures", force: :cascade do |t|
-    t.text "name"
     t.integer "x"
     t.integer "y"
     t.integer "position_number"

@@ -1,6 +1,11 @@
-<h1>RIG CHOICE</h1>
+<div class="container">
+  <h1>RIG CHOICE</h1>
 
+  <p class="plain-text">How would you like to position your fixtures?</p>
 
-<%= link_to 'Quick draw on stage', stage_path %>
-<%= link_to 'Build a rig', new_rig_path %>
-<%= link_to 'Choose from library', rigs_path %>
+  <ul class="option-container">
+    <li class="link-xlge"><%= link_to 'Quick draw on stage', stage_path %></li>
+    <li class="link-xlge">Build a rig<br><span class="soon">coming soon</span></li>
+    <li class="link-xlge"><%= link_to 'Choose from library', rigs_path %></li>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>RIG LIBRARY</h1>
+
+  <ul>
+    <% @rigs.each do |r| %>
+      <li><%= link_to r.name, rig_path(r) %></li>
+    <% end %>
+  </ul>
+</div>
