@@ -116,7 +116,7 @@ $width-canvas: 360px;
 }
 
 button.button-med {
-  @extend button.transport;
+  @extend .transport;
   padding: 1rem;
   border: 1px solid lighten( $dark-grey, 10% );
   align-self: flex-end;
