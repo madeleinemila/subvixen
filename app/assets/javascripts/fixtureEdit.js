@@ -6,17 +6,37 @@ $(document).ready(function() {
       // get which property this input relates to
       const prop = $(this).data('prop');
       // cache value
-      const value = $(this).val();
+      let value = +( $(this).val() );
       // change property's value in fixture obj
       switch (prop) {
         case 'pos':
-          fixtures[id].posNum = value;
+          fixtures[id].posNum = value; // no validations added here, letting user determine own numbering system
           break;
         case 'x':
-          fixtures[id].x = value;
+          if (value < 0) {
+            value = 0;
+            fixtures[id].x = value;
+            $(this).val( value );
+          } else if (value >= vw) {
+            value = vw - 1;
+            fixtures[id].x = value;
+            $(this).val( value );
+          } else {
+            fixtures[id].x = value;
+          }
           break;
         case 'y':
-          fixtures[id].y = value;
+          if (value < 0) {
+            value = 0;
+            fixtures[id].y = value;
+            $(this).val( value );
+          } else if (value >= vh) {
+            value = vh - 1;
+            fixtures[id].y = value;
+            $(this).val( value );
+          } else {
+            fixtures[id].y = value;
+          }
           break;
         default:
           console.log( `Invalid property data` );
