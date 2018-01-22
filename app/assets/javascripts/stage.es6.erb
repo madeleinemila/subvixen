@@ -47,7 +47,10 @@ $('.pages.stage').ready(function() {
         $('#fixtures-main').empty();
         for (let i = 0; i < fixtures.length; i++) {
           const f = fixtures[i];
-          const node = $(`<p># <input class="f-param" value="${ f.posNum }" /> x: <input class="f-param" value="${ f.x }"/> y: <input class="f-param" value="${ f.y }"/>`);
+          const node =
+            $(`<p id="f-${ i }"># <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos" />
+            x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" />
+            y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" />`);
           node.appendTo( "#fixtures-main" );
         }
     };
@@ -125,6 +128,7 @@ const drawSim = function() {
 };
 
 const drawFixtures = function() {
+  drawNewStageFrame(); // clear previous fixtures
   if (fixtures.length > 0) {
     fixtures.forEach(function(f) {
       drawCircle( f.x, f.y, 7, '#FFF0', 3, '#222', stageCtx );
