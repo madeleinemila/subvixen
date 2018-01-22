@@ -1,7 +1,9 @@
+// ******** VIDEOS *************
 
 
+@import 'pages';
 
-// ******** VIDEOS/NEW - UPLOAD *************
+
 
 fieldset {
   border: none;
@@ -14,4 +16,27 @@ label {
 
 .progress {
   display: none;
+}
+
+input[type="submit"] {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 2rem 0;
+  display: inline-block;
+  width: 20rem;
+}
+
+
+.nav-video {
+  margin: 2rem 0;
+  padding: 2rem;
+  display: inline-block;
+  max-width: 360px;
+  text-align: center;
+  border: 1px solid lighten( $dark-grey, 10% );
+  // a {
+  //   @extend a;
+  //   // margin: 2rem 0;
+  // }
 }

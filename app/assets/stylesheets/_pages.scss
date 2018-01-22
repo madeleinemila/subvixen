@@ -11,6 +11,12 @@ $highlight: #FFE29D;
   box-sizing: border-box;
 }
 
+
+
+.container {
+  padding: 2rem;
+}
+
 body {
   font-family: Avenir, sans-serif;
   // font-family: Inconsolata, sans-serif;
@@ -42,4 +48,13 @@ button {
 
 .on {
   color: $highlight !important;
+}
+
+a {
+  text-decoration: none;
+  color: $off-white;
+}
+
+a:hover {
+  color: $highlight;
 }

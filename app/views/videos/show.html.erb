@@ -1,11 +1,14 @@
-<h1>video show</h1>
+<div class="container">
+  <h1>VIDEO PREVIEW</h1>
 
 
-<video controls preload=auto>
-  <!-- preload=auto to catch video metadata before playing TODO check if needed -->
-  <source src="<%= @video.transform_url %>">
-</video>
+  <video controls preload=auto>
+    <!-- preload=auto to catch video metadata before playing TODO check if needed -->
+    <source src="<%= @video.transform_url %>">
+  </video>
 
-<div class="nav-video">
-  <a href="/stage">Put this video on the stage</a>
+  <!-- <div class="nav-video"> -->
+  <a href="/stage" class="nav-video">Put this video on the stage</a>
+  <!-- </div> -->
+
 </div>

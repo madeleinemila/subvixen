@@ -32,8 +32,10 @@ $('.pages.stage').ready(function() {
     simCtx.clearRect(0, 0, vw, vh); // clear previous canvas to avoid aliasing
     drawSim();
 
+    // ** sort fixtures by posNum
+    const fSorted = _(fixtures).sortBy( 'posNum' );
     // update lut table
-    fixtures.forEach(function(f, i) {
+    fSorted.forEach(function(f, i) {
       const pixel = getPixelHex( stageCtx, f.x, f.y );
       lut[i].push( pixel );
     });

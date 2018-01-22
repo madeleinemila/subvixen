@@ -1,49 +1,52 @@
-<h1>upload</h1>
+<div class="new-container container">
+  <h1>UPLOAD</h1>
 
-<!-- ** if errors from prev cloudinary upload attempt -->
-<% if @upload_error %>
-  <div id="upload-errors">
-    <h3>Sorry, your video could not be uploaded.</h3>
-    <ul>
-      <!-- keeping in ul for consistent aesthetic -->
-      <li><%= @upload_error %></li>
-    </ul>
+  <!-- ** if errors from prev cloudinary upload attempt -->
+  <% if @upload_error %>
+    <div id="upload-errors">
+      <h3>Sorry, your video could not be uploaded.</h3>
+      <ul>
+        <!-- keeping in ul for consistent aesthetic -->
+        <li><%= @upload_error %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- ** if errors from previous db save attempt ** -->
+  <% if @video.errors.any? %>
+    <div id="save-errors">
+      <h3>Sorry, your video could not be saved.</h3>
+      <ul>
+        <%= image.errors.full_messages.each do |m| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- FORM -->
+  <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
+
+    <!-- form body -->
+    <fieldset>
+      <%= form.label :file %>
+      <%= form.file_field :file %>
+    </fieldset>
+    <fieldset>
+      <%= form.label :name %>
+      <%= form.text_area :name %>
+    </fieldset>
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+
+  <!-- PROGRESS -->
+  <div class="progress">
+    <p>Upload in progress...</p>
   </div>
-<% end %>
 
-<!-- ** if errors from previous db save attempt ** -->
-<% if @video.errors.any? %>
-  <div id="save-errors">
-    <h3>Sorry, your video could not be saved.</h3>
-    <ul>
-      <%= image.errors.full_messages.each do |m| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<!-- FORM -->
-<%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
-
-  <!-- form body -->
-  <fieldset>
-    <%= form.label :file %>
-    <%= form.file_field :file %>
-  </fieldset>
-  <fieldset>
-    <%= form.label :name %>
-    <%= form.text_area :name %>
-  </fieldset>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-<!-- PROGRESS -->
-<div class="progress">
-  <p>Upload in progress...</p>
 </div>
