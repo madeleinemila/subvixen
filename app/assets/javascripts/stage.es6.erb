@@ -24,16 +24,6 @@ $('.pages.stage').ready(function() {
     stage.height = vh;
     sim.height = vh;
     numFrames = video.duration / frameInterval;
-    // show a frame to start with
-    // video.play();
-    // setTimeout(function() {
-    //   video.pause();
-    //   video.currentTime = 0;
-    //   // drawNewStageFrame();  // CHANGED
-    //   $('#stage-canvas').on('timeupdate', () => {
-    //     drawNewStageFrame();
-    //   });
-    // }, 200 ); // CHANGED from 100
     video.currentTime = 0;
     setTimeout(drawNewStageFrame, 300);
 
@@ -59,7 +49,8 @@ $('.pages.stage').ready(function() {
       lut.push( new Array(1) );
       drawFixtures();
       drawSim();
-      fixtureLog();
+      // fixtureLog();
+      fixtureLogAppend( _(fixtures).last() );
     });
 
 
@@ -166,8 +157,17 @@ const getPixelHex = function( context, x, y ) {
   return "#" + hex( rgb.data[0] ) + hex( rgb.data[1] ) + hex( rgb.data[2] );
 };
 
+// ~~~~~ Node template for Fixture log
+const fLogTemplate = function( posNum, fid, x, y ) {
+  return `<p>
+    # <input type="number" class="f-param" value="${ posNum }" data-prop="pos" data-fid="${ fid }"/>
+    x: <input type="number" class="f-param" value="${ x }" data-prop="x" min="0" max="${ vw - 1 }" data-fid="${ fid }"/>
+    y: <input type="number" class="f-param" value="${ y }" data-prop="y" min="0" max="${ vh - 1 }" data-fid="${ fid }"/>
+    <button class="f-delete" data-fid="${ fid }">&times;</button>
+  </p>`;
+};
 
-// fixture log helper
+// fixture log helper - redraw whole fixture log
 const fixtureLog = function( sort=false ) {
     $('#fixtures-main').empty();
     let fArray;
@@ -178,13 +178,14 @@ const fixtureLog = function( sort=false ) {
     }
     for (let i = 0; i < fArray.length; i++) {
       const f = fArray[i];
-      const node =
-        $(`<p>
-          # <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos" data-fid="${ f.fid }"/>
-          x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" min="0" max="${ vw - 1 }" data-fid="${ f.fid }"/>
-          y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" min="0" max="${ vh - 1 }" data-fid="${ f.fid }"/>
-          <button class="f-delete" data-fid="${ f.fid }">&times;</button>
-        </p>`);
+      const node = $( fLogTemplate( f.posNum, f.fid, f.x, f.y ) );
       node.appendTo( "#fixtures-main" );
     }
+};
+
+
+// fixture append - if added a new fixture by mouse click, don't want to redraw whole thing re sorting
+const fixtureLogAppend = function( f ) {
+  const node = $( fLogTemplate( f.posNum, f.fid, f.x, f.y ) );
+  node.appendTo( '#fixtures-main' );
 };

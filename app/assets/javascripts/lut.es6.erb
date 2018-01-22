@@ -19,11 +19,11 @@ const stringifyLUT = function() {
   lutString += `const uint16_t totalFixtures = ${ lut.length };<br />`
   lutString += `const uint16_t totalFrames = ${ lut[0].length };<br />`;
   lutString += `<br />`;
-  // begin pixel print
   lutString += "const uint8_t fx[totalFixtures][totalFrames][3] PROGMEM = {<br /><br />";
-
+  // begin pixel print
   lut.forEach((fixture, i) => {
-    lutString += `&nbsp;<span class="comment">// fixture ${ i + 1 }</span><br />&nbsp;{`;
+    const pos = _(fixtures).sortBy( 'posNum' )[i].posNum; // retrieve user posNum for convenience in comments
+    lutString += `&nbsp;<span class="comment">// fixture ${ i + 1 } - user position ${ pos } </span><br />&nbsp;{`;
 
 
     fixture.forEach((pixel, i) => {

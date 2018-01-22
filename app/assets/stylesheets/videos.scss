@@ -35,8 +35,8 @@ input[type="submit"] {
   max-width: 360px;
   text-align: center;
   border: 1px solid lighten( $dark-grey, 10% );
-  // a {
-  //   @extend a;
-  //   // margin: 2rem 0;
-  // }
+}
+
+.video-lge {
+  display: block;
 }
