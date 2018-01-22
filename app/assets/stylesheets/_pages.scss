@@ -26,6 +26,8 @@ body {
   letter-spacing: 2px;
 }
 
+
+
 h1 {
   font-weight: normal;
 }
@@ -57,4 +59,41 @@ a {
 
 a:hover {
   color: $highlight;
+}
+
+.plain-text {
+  letter-spacing: 1px;
+}
+
+.link-xlge {
+  @extend a;
+  flex: 1;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  align-self: center;
+  text-align: center;
+  padding: 5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.link-bigger-left {
+  border: 1px solid lighten( $dark-grey, 10% );
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+
+
+.option-container {
+  // display: table;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // align-items: center;
+  // justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid lighten( $dark-grey, 10% );
 }

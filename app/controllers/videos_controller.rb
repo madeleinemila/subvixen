@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+
   def new
     @video = Video.new
   end
@@ -32,6 +33,10 @@ class VideosController < ApplicationController
     else
       render :new
     end
+  end
+
+  def index
+    @videos = Video.all
   end
 
   def show

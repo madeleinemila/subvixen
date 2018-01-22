@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>VIDEO LIBRARY</h1>
+
+  <ul>
+    <% @videos.each do |v| %>
+      <li><%= link_to v.name, video_path(v) %></li>
+    <% end %>
+  </ul>
+</div>
