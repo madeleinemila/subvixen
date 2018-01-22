@@ -1,0 +1,33 @@
+$(document).ready(function() {
+
+  $('.copy').on('click', function() {
+    const animTime = 1000; // for notice on gui fading out
+    selectText( 'lut' );
+    $('.code').css( 'color', 'black' );
+    document.execCommand('copy');
+    window.getSelection().empty(); // then clear highlighting on gui
+    console.log( 'Copied!' );
+    $('.copy-notice').text( 'Copying to clipboard...' ).animate({opacity: 0}, animTime);
+    setTimeout(function() {
+      $('.copy-notice').text('');
+      $('.copy-notice').css( 'opacity', '1' );
+      // $('.code').animate({'color': '#fdfdfd'}, 500);
+      $('.code').css('color', '#fdfdfd' );
+    }, animTime + 100);
+  });
+
+});
+
+
+const selectText = function( id ) {
+  if (document.selection) {
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById( id ));
+      range.select();
+  } else if (window.getSelection) {
+      var range = document.createRange();
+      range.selectNode(document.getElementById( id ));
+      window.getSelection().empty(); // needed for chrome
+      window.getSelection().addRange(range);
+  }
+};

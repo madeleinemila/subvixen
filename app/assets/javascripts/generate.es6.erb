@@ -21,6 +21,8 @@ $('.pages.stage').ready(function() {
     video.currentTime = 0;
     // flag for generation active
     gen = true;
+    // change look of generate button
+    $(this).addClass( 'generating' );
   });
 
 
@@ -53,6 +55,8 @@ $('.pages.stage').ready(function() {
       // **** DISPLAY GENERATED CODE ****
       stringifyLUT();
       displayLUT();
+      // return generate button to orig look
+      $('#generate').removeClass( 'generating' );
     }
 
   });
