@@ -98,13 +98,16 @@ $width-canvas: 360px;
   // transition: color 0.5s ease;
 }
 
-.code-controls {
+.controls {
   display: flex;
   margin-bottom: 1rem;
 }
 
-.copy-notice {
+.flex-1 {
   flex: 1;
+}
+
+.copy-notice {
   align-self: center;
   font-size: 0.8rem;
   text-align: center;
@@ -112,12 +115,10 @@ $width-canvas: 360px;
   color: $highlight;
 }
 
-button.copy {
+button.button-med {
   @extend button.transport;
   padding: 1rem;
   border: 1px solid lighten( $dark-grey, 10% );
-  flex: 1;
-  // vertical-align: middle;
   align-self: flex-end;
   margin: 0;
 }
