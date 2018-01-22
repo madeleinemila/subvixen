@@ -32,7 +32,11 @@ $('.pages.stage').ready(function() {
     // draw new frame
     drawNewStageFrame();
     simCtx.clearRect(0, 0, vw, vh); // clear previous canvas to avoid aliasing
-    drawSim();
+    if (overlay) {
+      drawSimOverlay();
+    } else {
+      drawSim();
+    }
 
     // ** sort fixtures by posNum
     const fSorted = _(fixtures).sortBy( 'posNum' );

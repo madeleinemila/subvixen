@@ -49,27 +49,30 @@ $('.pages.stage').ready(function() {
       // drawFixtures();
       // simCtx.clearRect(0, 0, vw, vh);
       // drawSim();
-      refresh();
+      if (overlay) {
+        refreshWithOverlay();
+      } else {
+        refresh();
+      }
   });  // end on change input
 
 
 
   $('body').on('click', '.f-delete', function() {
-      debugger;
       const id = getFixtureId( $(this) );
-      debugger;
       fixtures.splice( id, 1 )  // !! mutating
       // remove a placeholder in LUT
       lut.pop();
-      // console.log( fixtures );
       fixtureLog( true );
-      refresh();
+      if (overlay) {
+        refreshWithOverlay();
+      } else {
+        refresh();
+      }
   });
 
   $('#f-sort').on('click', function() {
-    // sortByPosNum = true;
-    fixtureLog( true );
-    // sortByPosNum = false;
+    fixtureLog( true ); // sort = true
   });
 
 }); // end doc ready
@@ -79,3 +82,9 @@ const refresh = function() { // TODO might be other occurrences that could be re
     simCtx.clearRect(0, 0, vw, vh);
     drawSim();
 };
+
+const refreshWithOverlay = function() {
+  drawFixtures();
+  simCtx.clearRect(0, 0, vw, vh);
+  drawSimOverlay();
+}

@@ -1,39 +1,47 @@
 let click = 0;
+let overlay = false;
+const olaySize = 20;
+const borderSize = 5;
+const charInc = 4;
 
 $('.pages.stage').ready(function() {
 
   $('#f-overlay').on('click', function() {
     if (click % 2 === 0) {
-      const olaySize = 20;
-      const borderSize = 5;
-      const charInc = 4;
       simCtx.clearRect( 0, 0, vw, vh ); // clear previous render
       if (fixtures.length > 0) {
-        fixtures.forEach(function(f) {
-          f.color = getPixelHex( stageCtx, f.x, f.y );  // TODO this is almost drawSim, refactor
-          drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
-          simCtx.font = "14px Helvetica";
-          simCtx.fillStyle = "#222";
-          numToDisplay( f, borderSize, charInc );
-        }); // end forEach
+          // f.color = getPixelHex( stageCtx, f.x, f.y );
+          // drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
+          // simCtx.font = "14px Helvetica";
+          // simCtx.fillStyle = "#222";
+          // numToDisplay( f, borderSize, charInc );
+        drawSimOverlay();
         $(this).text( 'HIDE OVERLAY' );
         $(this).addClass( 'generating' );
+        overlay = true;
         click++;
       }
     } else {
       refresh();
       $(this).text( 'SHOW OVERLAY' );
       $(this).removeClass( 'generating' );
+      overlay = false;
       click++;
     }
-
-    // TODO fix recognition of overlay state when changing values
-
-
   }); // end on click
 
 });
 
+
+const drawSimOverlay = function() {
+      fixtures.forEach(function(f) {
+        f.color = getPixelHex( stageCtx, f.x, f.y );
+        drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
+        simCtx.font = "14px Helvetica";
+        simCtx.fillStyle = "#222";
+        numToDisplay( f, borderSize, charInc );
+      });
+};
 
 const numToDisplay = function( f, border, char ) {
     const num = f.posNum.toString();

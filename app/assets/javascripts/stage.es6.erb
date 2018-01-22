@@ -48,8 +48,11 @@ $('.pages.stage').ready(function() {
       // n.b. also add empty array elem to LUT at this point
       lut.push( new Array(1) );
       drawFixtures();
-      drawSim();
-      // fixtureLog();
+      if (overlay) {
+        drawSimOverlay();
+      } else {
+        drawSim();
+      }
       fixtureLogAppend( _(fixtures).last() );
     });
 
@@ -127,7 +130,11 @@ const drawVideo = function() {
   drawNewStageFrame(); // draws new frame of video to stage canvas
   drawFixtures(); // draw fixtures back over the top of video
   simCtx.clearRect(0, 0, vw, vh); // clear previous sim canvas to avoid aliasing
-  drawSim(); // draw fixtures back into sim
+  if (overlay) {
+    drawSimOverlay(); // draw fixtures back into sim
+  } else {
+    drawSim();
+  }
   requestAnimationFrame( drawVideo );
 };
 
