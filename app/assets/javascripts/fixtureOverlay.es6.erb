@@ -6,13 +6,13 @@ $('.pages.stage').ready(function() {
     if (click % 2 === 0) {
       const olaySize = 20;
       const borderSize = 5;
-      const charInc = 5;
+      const charInc = 4;
       simCtx.clearRect( 0, 0, vw, vh ); // clear previous render
       if (fixtures.length > 0) {
         fixtures.forEach(function(f) {
           f.color = getPixelHex( stageCtx, f.x, f.y );  // TODO this is almost drawSim, refactor
           drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
-          simCtx.font = "16px Helvetica";
+          simCtx.font = "14px Helvetica";
           simCtx.fillStyle = "#222";
           numToDisplay( f, borderSize, charInc );
         }); // end forEach
@@ -27,7 +27,7 @@ $('.pages.stage').ready(function() {
       click++;
     }
 
-
+    // TODO fix recognition of overlay state when changing values
 
 
   }); // end on click
@@ -43,5 +43,7 @@ const numToDisplay = function( f, border, char ) {
       simCtx.fillText( f.posNum, f.x - border - char, f.y + border );
     } else if (num.length === 3) {
       simCtx.fillText( f.posNum, f.x - border - char * 2, f.y + border );
+    } else if (num.length > 3) {
+      simCtx.fillText( f.posNum, f.x - border - char * 3, f.y + border );
     }
 };
