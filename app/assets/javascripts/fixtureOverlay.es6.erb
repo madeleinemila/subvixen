@@ -16,13 +16,13 @@ $('.pages.stage').ready(function() {
           simCtx.fillStyle = "#222";
           numToDisplay( f, borderSize, charInc );
         }); // end forEach
-        $(this).text( 'HIDE NUMBER OVERLAY' );
+        $(this).text( 'HIDE OVERLAY' );
         $(this).addClass( 'generating' );
         click++;
       }
     } else {
       refresh();
-      $(this).text( 'SHOW NUMBER OVERLAY' );
+      $(this).text( 'SHOW OVERLAY' );
       $(this).removeClass( 'generating' );
       click++;
     }

@@ -42,11 +42,12 @@ $('.pages.stage').ready(function() {
 
 
     // FYI, 'shape' of fixture object
-    // x, y, color, posNum, i.e. position in user's hardware circuit
+    // fid, x, y, color, posNum i.e. position in user's hardware circuit
 
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
       fixtures.push({
+        fid: fixtures.length, // unique identifier so user can change posNum any way
         x: Math.round( mousePos.x ),
         y: Math.round( mousePos.y ),
         color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
@@ -167,15 +168,22 @@ const getPixelHex = function( context, x, y ) {
 
 
 // fixture log helper
-const fixtureLog = function() {
+const fixtureLog = function( sort=false ) {
     $('#fixtures-main').empty();
-    for (let i = 0; i < fixtures.length; i++) {
-      const f = fixtures[i];
+    let fArray;
+    if (sort) {
+      fArray = _(fixtures).sortBy( 'posNum' );
+    } else {
+      fArray = fixtures;
+    }
+    for (let i = 0; i < fArray.length; i++) {
+      const f = fArray[i];
       const node =
-        $(`<p id="f-${ i }"># <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos"/>
-        x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" min="0" max="${ vw - 1 }"/>
-        y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" min="0" max="${ vh - 1 }"/>
-        <button class="f-delete">&times;</button>
+        $(`<p>
+          # <input type="number" class="f-param" value="${ f.posNum }" data-prop="pos" data-fid="${ f.fid }"/>
+          x: <input type="number" class="f-param" value="${ f.x }" data-prop="x" min="0" max="${ vw - 1 }" data-fid="${ f.fid }"/>
+          y: <input type="number" class="f-param" value="${ f.y }" data-prop="y" min="0" max="${ vh - 1 }" data-fid="${ f.fid }"/>
+          <button class="f-delete" data-fid="${ f.fid }">&times;</button>
         </p>`);
       node.appendTo( "#fixtures-main" );
     }

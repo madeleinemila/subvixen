@@ -1,12 +1,12 @@
+
 $('.pages.stage').ready(function() {
 
   const getFixtureId = function( node ) {
-    return node.parent().attr('id').slice(2);
+    console.log(node.data('fid'));
+    return node.data('fid');
   }
 
   $('body').on('change', '.f-param', function() {
-      // get fixture index from parent <p>
-      // const id = $(this).parent().attr('id').slice(2);
       const id = getFixtureId( $(this) );
       // get which property this input relates to
       const prop = $(this).data('prop');
@@ -15,7 +15,7 @@ $('.pages.stage').ready(function() {
       // change property's value in fixture obj
       switch (prop) {
         case 'pos':
-          fixtures[id].posNum = value; // no validations added here, letting user determine own numbering system
+          fixtures[id].posNum = value; // no validations added here, letting user determine own numbering system that could involve decimals or neg nums
           break;
         case 'x':
           if (value < 0) {
@@ -55,13 +55,21 @@ $('.pages.stage').ready(function() {
 
 
   $('body').on('click', '.f-delete', function() {
+      debugger;
       const id = getFixtureId( $(this) );
+      debugger;
       fixtures.splice( id, 1 )  // !! mutating
       // remove a placeholder in LUT
       lut.pop();
       // console.log( fixtures );
-      fixtureLog();
+      fixtureLog( true );
       refresh();
+  });
+
+  $('#f-sort').on('click', function() {
+    // sortByPosNum = true;
+    fixtureLog( true );
+    // sortByPosNum = false;
   });
 
 }); // end doc ready
