@@ -1,19 +1,35 @@
+let click = 0;
+
 $('.pages.stage').ready(function() {
 
   $('#f-overlay').on('click', function() {
-    const olaySize = 20;
-    const borderSize = 5;
-    const charInc = 5;
-    simCtx.clearRect( 0, 0, vw, vh ); // clear previous render
+    if (click % 2 === 0) {
+      const olaySize = 20;
+      const borderSize = 5;
+      const charInc = 5;
+      simCtx.clearRect( 0, 0, vw, vh ); // clear previous render
       if (fixtures.length > 0) {
         fixtures.forEach(function(f) {
-          f.color = getPixelHex( stageCtx, f.x, f.y );  // TODO this first part is almost drawSim, refactor
+          f.color = getPixelHex( stageCtx, f.x, f.y );  // TODO this is almost drawSim, refactor
           drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
           simCtx.font = "16px Helvetica";
           simCtx.fillStyle = "#222";
           numToDisplay( f, borderSize, charInc );
-        });
+        }); // end forEach
+        $(this).text( 'HIDE NUMBER OVERLAY' );
+        $(this).addClass( 'generating' );
+        click++;
       }
+    } else {
+      refresh();
+      $(this).text( 'SHOW NUMBER OVERLAY' );
+      $(this).removeClass( 'generating' );
+      click++;
+    }
+
+
+
+
   }); // end on click
 
 });
