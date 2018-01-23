@@ -59,6 +59,8 @@ $('.pages.stage').ready(function() {
 
 
   $('body').on('click', '.f-delete', function() {
+      const deleteConfirmed = confirm( `Are you sure you want to delete this fixture?` );
+      if (!deleteConfirmed) return;
       const id = getFixtureId( $(this) );
       // find fixture to delete by fid
       const indexToDelete = _(fixtures).findIndex( {'fid': id} );
