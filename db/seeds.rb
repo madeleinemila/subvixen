@@ -11,6 +11,6 @@ f7 = Fixture.create :x => 90, :y => 190, :position_number => 7
 f8 = Fixture.create :x => 180, :y => 190, :position_number => 8
 f9 = Fixture.create :x => 270, :y => 190, :position_number => 9
 
-r1 = Rig.create :name => "3x3 grid";
+r1 = Rig.create :name => "3x3 grid", :width => 360, :height => 200;
 
 r1.fixtures << f1 << f2 << f3 << f4 << f5 << f6 << f7 << f8 << f9
