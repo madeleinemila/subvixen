@@ -15,7 +15,7 @@ $('.pages.stage').ready(function() {
       // change property's value in fixture obj
       switch (prop) {
         case 'pos':
-          fixtures[id].posNum = value; // no validations added here, letting user determine own numbering system that could involve decimals or neg nums
+            fixtures[id].posNum = parseInt( value ); // neg numbers ok, only stopping users using float
           break;
         case 'x':
           if (value < 0) {
@@ -46,15 +46,29 @@ $('.pages.stage').ready(function() {
         default:
           console.log( `Invalid property data` );
       }
-      // drawFixtures();
-      // simCtx.clearRect(0, 0, vw, vh);
-      // drawSim();
+      const posNums = getPosNums();
+      // if this is a posNum field that was changed
+      console.log( `posNums`, posNums );
+      if ( $(this).data().prop === 'pos') {
+        // see if this posNum has already been used
+        const occurs = _(posNums).countBy(function(n) {
+          return n === value;
+        });
+        if (occurs.true > 1) {
+          $(this).addClass('dup');
+        } else {
+          $(this).removeClass('dup');
+        }
+      }
+
+
       if (overlay) {
         refreshWithOverlay();
       } else {
         refresh();
       }
   });  // end on change input
+
 
 
 
@@ -94,3 +108,23 @@ const refreshWithOverlay = function() {
   simCtx.clearRect(0, 0, vw, vh);
   drawSimOverlay();
 }
+
+const getPosNums = function() {
+  let posNumsArray = [];
+  fixtures.forEach(function(f) {
+    posNumsArray.push( f.posNum );
+  });
+  return posNumsArray;
+};
+
+
+
+
+
+
+
+
+
+
+
+// **

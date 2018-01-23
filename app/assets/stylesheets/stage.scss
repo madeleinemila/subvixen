@@ -146,3 +146,13 @@ button.button-med {
   color: $highlight !important;
   background-color: $dark-grey !important;
 }
+
+.dup {
+  background-color: $highlight;
+  color: $dark-grey;
+}
+
+.dup:focus {
+  background-color: $highlight;
+  color: $dark-grey;
+}
