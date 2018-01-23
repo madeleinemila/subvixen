@@ -26,6 +26,11 @@ body {
   letter-spacing: 2px;
 }
 
+@media only screen and (max-width: 500px) {
+  body {
+    background-color: red;
+  }
+}
 
 
 h1 {
