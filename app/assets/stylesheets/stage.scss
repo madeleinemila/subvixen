@@ -95,7 +95,8 @@ $width-canvas: 360px;
   font-family: Monaco, monospace;
   font-size: 0.6rem;
   color: $off-white;
-  // transition: color 0.5s ease;
+  overflow: scroll;
+  height: $height-stage-component;
 }
 
 .controls {
