@@ -12,6 +12,8 @@ class PagesController < ApplicationController
     @video = Video.find session[:number]
     if session[:rig]
       @rig = Rig.find session[:rig]
+      gon.rig = @rig
+      gon.fixtures = @rig.fixtures
     end
   end
 end

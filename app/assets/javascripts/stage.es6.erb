@@ -1,15 +1,12 @@
 let video, stage, stageCtx, sim, simCtx, vw, vh, numFrames;
-// let prevTime = 0; // for generating at set intervals
 const fixtures = [];
 const lut = [];
 
 
-// only run this js on stage page ready
 $('.pages.stage').ready(function() {
   // using vanilla js from this point on to avoid vid/canvas perform issues
-  // get video
+
   video = document.getElementById('stage-video');
-  // get canvas contexts
   stage = document.getElementById('stage-canvas');
   stageCtx = stage.getContext('2d');
   sim = document.getElementById('sim-canvas');
@@ -25,7 +22,12 @@ $('.pages.stage').ready(function() {
     sim.height = vh;
     numFrames = video.duration / frameInterval;
     video.currentTime = 0;
-    setTimeout(drawNewStageFrame, 300);
+    setTimeout(function() {
+      rigLibraryFixtures();
+      drawNewStageFrame();
+      refresh();
+      fixtureLog();
+    }, 300);
 
 
     // ******* FIXTURE CREATION *********
@@ -89,7 +91,21 @@ $('.pages.stage').ready(function() {
 
 // ******************** Component functions ***************************
 
+// get fixtures from selected rig in rig library
+const rigLibraryFixtures = function() {
+  gon.fixtures.forEach((f) => {
+    fixtures.push({
+      fid: f.id,
+      x: f.x,
+      y: f.y,
+      color: getPixelHex( stageCtx, f.x, f.y ),
+      posNum: f.id,
+    });
+    // make placeholder in lut
+    lut.push( new Array(1) );
+  });
 
+};
 
 
 // circle helper function
