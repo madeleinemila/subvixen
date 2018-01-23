@@ -13,5 +13,6 @@ class RigsController < ApplicationController
     gon.rig = @rig
     @fixtures = @rig.fixtures
     gon.fixtures = @fixtures
+    session[:rig] = @rig.id # persisting in session hash to use in stage
   end
 end
