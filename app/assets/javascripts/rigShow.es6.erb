@@ -1,0 +1,16 @@
+let rigShow, rigCtx;
+
+$('.rigs.show').ready(function() {
+
+  rigShow = $('#rig-show-canvas')[0];
+  rigCtx = rigShow.getContext('2d');
+
+  // make canvas aspect ratio match stored rig
+  rigShow.width = gon.rig.width;
+  rigShow.height = gon.rig.height;
+
+  gon.fixtures.forEach(function(f) {
+    drawCircle( f.x, f.y, 5, 'white', 0, 'white', rigCtx );
+  });
+
+});

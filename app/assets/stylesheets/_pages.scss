@@ -70,6 +70,11 @@ a:hover {
   letter-spacing: 1px;
 }
 
+.emphasize {
+  text-transform: uppercase;
+  color: $highlight;
+}
+
 .link-xlge {
   @extend a;
   flex: 1;

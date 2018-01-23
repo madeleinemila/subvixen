@@ -36,6 +36,7 @@ gem 'jquery-rails'
 gem 'sprockets'
 gem 'sprockets-es6'
 gem 'jquery-fileupload-rails'
+gem 'gon' # to use controller variables in js
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

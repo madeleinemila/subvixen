@@ -8,4 +8,10 @@ class RigsController < ApplicationController
     @rigs = Rig.all
   end
 
+  def show
+    @rig = Rig.find params[:id]
+    gon.rig = @rig
+    @fixtures = @rig.fixtures
+    gon.fixtures = @fixtures
+  end
 end
