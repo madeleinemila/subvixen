@@ -7,7 +7,9 @@ $('.pages.stage').ready(function() {
   }
 
   $('body').on('change', '.f-param', function() {
-      const id = getFixtureId( $(this) );
+      const fid = getFixtureId( $(this) );
+      // ** get which INDEX in current fixtures array this fid is ***
+      const id = _(fixtures).findIndex( {'fid': fid} );
       // get which property this input relates to
       const prop = $(this).data('prop');
       // cache value
@@ -48,7 +50,6 @@ $('.pages.stage').ready(function() {
       }
       const posNums = getPosNums();
       // if this is a posNum field that was changed
-      console.log( `posNums`, posNums );
       if ( $(this).data().prop === 'pos') {
         // see if this posNum has already been used
         const occurs = _(posNums).countBy(function(n) {

@@ -192,17 +192,17 @@ const fixtureLog = function( sort=false ) {
 };
 
 // fixture duplicates - check for fixtures with same position number
-const checkforDups = function( fixture ) {
-  const srcPosNum = fixture.posNum;
-  const dupChecker = _.matcher({ posNum: srcPosNum });
-  const dups = _.filter( fixtures, dupChecker );
-  if ( dups.length > 1 ) {
-    // class name for dup highlighting
-    return "dup";
-  } else {
-    return "";
-  }
-};
+// const checkforDups = function( fixture ) {
+//   const srcPosNum = fixture.posNum;
+//   const dupChecker = _.matcher({ posNum: srcPosNum });
+//   const dups = _.filter( fixtures, dupChecker );
+//   if ( dups.length > 1 ) {
+//     // class name for dup highlighting
+//     return "dup";
+//   } else {
+//     return "";
+//   }
+// };
 
 
 // fixture append - if added a new fixture by mouse click, don't want to redraw whole thing re sorting
