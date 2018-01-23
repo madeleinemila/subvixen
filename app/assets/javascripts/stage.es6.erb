@@ -42,8 +42,13 @@ $('.pages.stage').ready(function() {
         y: Math.round( mousePos.y ),
         color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
       });
-      // add a temp position number based on array position
-      _(fixtures).last().posNum = fixtures.length;
+      // add a temp position number based on ** one higher than largest posNum **
+      if (1 === fixtures.length) {
+        fixtures[0].posNum = 1;
+      } else {
+        const posNums = getPosNums( fixtures );
+        _(fixtures).last().posNum = _(posNums).max() + 1;
+      }
       // n.b. also add empty array elem to LUT at this point
       lut.push( new Array(1) );
       drawFixtures();
