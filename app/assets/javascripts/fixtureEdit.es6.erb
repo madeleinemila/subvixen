@@ -2,7 +2,7 @@
 $('.pages.stage').ready(function() {
 
   const getFixtureId = function( node ) {
-    console.log(node.data('fid'));
+    // console.log(node.data('fid'));
     return node.data('fid');
   }
 
@@ -60,9 +60,13 @@ $('.pages.stage').ready(function() {
 
   $('body').on('click', '.f-delete', function() {
       const id = getFixtureId( $(this) );
-      fixtures.splice( id, 1 )  // !! mutating
+      // find fixture to delete by fid
+      const indexToDelete = _(fixtures).findIndex( {'fid': id} );
+      // remove fixture
+      fixtures.splice( indexToDelete, 1 ); // mutating!!
       // remove a placeholder in LUT
       lut.pop();
+      // now render new view
       fixtureLog( true );
       if (overlay) {
         refreshWithOverlay();

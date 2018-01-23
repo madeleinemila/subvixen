@@ -6,7 +6,6 @@ $(document).ready(function() {
     $('.code').css( 'color', 'black' );
     document.execCommand('copy');
     window.getSelection().empty(); // then clear highlighting on gui
-    console.log( 'Copied!' );
     $('.copy-notice').text( 'Copying to clipboard...' ).animate({opacity: 0}, animTime);
     setTimeout(function() {
       $('.copy-notice').text('');
