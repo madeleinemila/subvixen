@@ -9,20 +9,22 @@ $('.pages.stage').ready(function() {
   $('#generate').on('click', function() {
     if (fixtures.length === 0) return;
     console.log(`Starting pixel generation...`);
-    // clear previous lut values
-    lut.forEach((arr) => {
-      arr.length = 0;
-    });
-    // set video to not looping
-    video.loop = false;
-    $('#loop').removeClass( "on" );
-    // cue video to head TODO could split out into a function in transport file
     video.pause(); // in case already playing
-    video.currentTime = 0;
-    // flag for generation active
-    gen = true;
-    // change look of generate button
-    $(this).addClass( 'generating' );
+    setTimeout(function() {  // allowing time for video.pause() to complete
+      // clear previous lut values
+      lut.forEach((arr) => {
+        arr.length = 0;
+      });
+      // set video to not looping
+      video.loop = false;
+      $('#loop').removeClass( "on" );
+      // set to start
+      video.currentTime = 0;
+      // flag for generation active
+      gen = true;
+      // change look of generate button
+      $(this).addClass( 'generating' );
+    }, 200);
   });
 
 
