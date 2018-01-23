@@ -17,6 +17,10 @@ $highlight: #FFE29D;
   padding: 2rem;
 }
 
+.inner-container {
+  padding: 3rem;
+}
+
 body {
   font-family: Avenir, sans-serif;
   // font-family: Inconsolata, sans-serif;
@@ -28,10 +32,24 @@ body {
 
 @media only screen and (max-width: 500px) {
   body {
-    background-color: red;
+    // background-color: red;
   }
 }
 
+nav {
+  height: 3rem;
+  background-color: lighten( $dark-grey, 10%);
+  margin-bottom: 2rem;
+}
+
+.logo {
+  padding: 0 1rem 0 2rem;
+  color: $dark-grey;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 3rem;
+  letter-spacing: -2px;
+}
 
 h1 {
   font-weight: normal;

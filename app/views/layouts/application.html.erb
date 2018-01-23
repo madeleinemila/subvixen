@@ -11,8 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body class="<%= controller_name %> <%= action_name %>">
   <!-- for jquery-readyselector -->
+  <body class="<%= controller_name %> <%= action_name %>">
+    <nav>
+      <%= link_to 'sV', root_path, :class => "logo", :data => {
+          :confirm => "Ready to go back to the start?\nAre you sure you want to lose your current progress?"} %>visual code generator
+      <%= link_to 'about', root_path %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
