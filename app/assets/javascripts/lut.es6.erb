@@ -11,9 +11,10 @@ const hexToRGB = function( hex ) {
 
 
 
+
 const stringifyLUT = function() {
-  // reinit string to empty
-  lutString = "";
+  // reinit string
+  lutString = neopixel.startString;
 
   // add decl for total fixtures and total frames
   lutString += `const uint16_t totalFixtures = ${ lut.length };<br />`
@@ -39,7 +40,8 @@ const stringifyLUT = function() {
 
     lutString += "<br />&nbsp;},<br /><br />";
   });
-  lutString += "};";
+  lutString += "};<br /><br />";
+  lutString += neopixel.endString;
 };
 
 

@@ -1,4 +1,5 @@
 #include <Adafruit_NeoPixel.h>
+
 // Please note below where to adjust for the pin and Neopixel type being used in your circuit
 // Default: PIN 6, Neopixel v2
 
