@@ -75,6 +75,10 @@ a:hover {
   color: $highlight;
 }
 
+.list-spaced {
+  padding: 1rem;
+}
+
 .link-xlge {
   @extend a;
   flex: 1;

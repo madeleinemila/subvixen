@@ -9,6 +9,8 @@ $('.pages.stage').ready(function() {
   $('#generate').on('click', function() {
     if (fixtures.length === 0) return;
     console.log(`Starting pixel generation...`);
+    // change look of generate button
+    $(this).addClass( 'generating' );
     video.pause(); // in case already playing
     setTimeout(function() {  // allowing time for video.pause() to complete
       // clear previous lut values
@@ -22,8 +24,6 @@ $('.pages.stage').ready(function() {
       video.currentTime = 0;
       // flag for generation active
       gen = true;
-      // change look of generate button
-      $(this).addClass( 'generating' );
     }, 200);
   });
 

@@ -1,9 +1,10 @@
 <div class="container">
   <h1>RIG LIBRARY</h1>
 
+  <p class="plain-text">Click a rig to see a map of its layout</p>
   <ul>
     <% @rigs.each do |r| %>
-      <li><%= link_to r.name, rig_path(r) %></li>
+      <li class="list-spaced"><%= link_to r.name, rig_path(r), :class => "plain-text" %></li>
     <% end %>
   </ul>
 </div>
