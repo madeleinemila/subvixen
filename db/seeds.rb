@@ -22,11 +22,11 @@ f15 = Fixture.create :x => 260, :y => 100, :position_number => 5
 
 
 
-r1 = Rig.create :name => "3 × 3 grid", :width => 360, :height => 200;
+r1 = Rig.create :name => "3 × 3 grid", :width => 360, :height => 200
 
 r1.fixtures << f1 << f2 << f3 << f4 << f5 << f6 << f7 << f8 << f9
 
 
-r2 = Rig.create :name => "16 element circle", :width => 360; :height => 200;
+r2 = Rig.create :name => "16 element circle", :width => 360, :height => 200
 
 r2.fixtures << f11 << f12 << f13 << f14 << f15
