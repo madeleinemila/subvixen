@@ -38,29 +38,42 @@ $('.pages.stage').ready(function() {
 
     stage.addEventListener('click', function(e) {
       const mousePos = getMousePos( this, e );
-      fixtures.push({
-        fid: fixtures.length, // unique identifier so user can change posNum any way
-        x: Math.round( mousePos.x ),
-        y: Math.round( mousePos.y ),
-        color: getPixelHex( stageCtx, mousePos.x, mousePos.y ),
-      });
-      // add a temp position number based on ** one higher than largest posNum **
-      if (1 === fixtures.length) {
-        fixtures[0].posNum = 1;
-      } else {
-        const posNums = getPosNums( fixtures );
-        _(fixtures).last().posNum = _(posNums).max() + 1;
+      addFixtureToArray( mousePos.x, mousePos.y );
+      let xMirrored, yMirrored;
+      if (sym.symH) {
+        if (mousePos.x !== vw / 2) {
+          xMirrored = vw - mousePos.x;
+        }
+        addFixtureToArray( xMirrored, mousePos.y );
       }
-      // n.b. also add empty array elem to LUT at this point
-      lut.push( new Array(1) );
-      drawFixtures();
-      if (overlay) {
-        drawSimOverlay();
-      } else {
-        drawSim();
-      }
-      fixtureLogAppend( _(fixtures).last() );
+
+
     });
+
+    const addFixtureToArray = function( x, y ) {
+        fixtures.push({
+          fid: fixtures.length, // unique identifier so user can change posNum any way
+          x: Math.round( x ),
+          y: Math.round( y ),
+          color: getPixelHex( stageCtx, x, y ),
+        });
+        // add a temp position number based on ** one higher than largest posNum **
+        if (1 === fixtures.length) {
+          fixtures[0].posNum = 1;
+        } else {
+          const posNums = getPosNums( fixtures );
+          _(fixtures).last().posNum = _(posNums).max() + 1;
+        }
+        // n.b. also add empty array elem to LUT at this point
+        lut.push( new Array(1) );
+        drawFixtures();
+        if (overlay) {
+          drawSimOverlay();
+        } else {
+          drawSim();
+        }
+        fixtureLogAppend( _(fixtures).last() );
+    };
 
 
     // when video plays, draw to the canvases (canvi?)

@@ -1,9 +1,11 @@
-const dup = {
-  dupH: false,
-  dupHCounter: 0,
+// for duplicating fixtures symmetrically over H or V axis
 
-  dupV: false,
-  dupVCounter: 0,
+const sym = {
+  symH: false,
+  symHCounter: 0,
+
+  symV: false,
+  symVCounter: 0,
 };
 
 
@@ -11,31 +13,27 @@ const dup = {
 
 
 $('.pages.stage').ready(function() {
-
-
-  $('#dup-h').on('click', function() {
-    if (dup.dupHCounter % 2 === 0) {
-      dup.dupH = true;
+  $('#sym-h').on('click', function() {
+    if (sym.symHCounter % 2 === 0) {
+      sym.symH = true;
       $(this).addClass( 'symmetry-on' );
-      dup.dupHCounter++;
+      sym.symHCounter++;
     } else {
-      dup.dupH = false;
+      sym.symH = false;
       $(this).removeClass( 'symmetry-on' );
-      dup.dupHCounter++;
+      sym.symHCounter++;
     }
   });
 
-  $('#dup-v').on('click', function() {
-    if (dup.dupVCounter % 2 === 0) {
-      dup.dupV = true;
+  $('#sym-v').on('click', function() {
+    if (sym.symVCounter % 2 === 0) {
+      sym.symV = true;
       $(this).addClass( 'symmetry-on' );
-      dup.dupVCounter++;
+      sym.symVCounter++;
     } else {
-      dup.dupV = false;
+      sym.symV = false;
       $(this).removeClass( 'symmetry-on' );
-      dup.dupVCounter++;
+      sym.symVCounter++;
     }
   });
-
-
 });
