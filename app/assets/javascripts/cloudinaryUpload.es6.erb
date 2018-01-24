@@ -1,8 +1,13 @@
 
 $(document).ready(function() {
   $('.actions>input').on('click', function() {
+
     if ( $('#video_name').val() !== "" ) { // as long as name field is filled out
+      // hide previous errors if there were any
+      $('#upload-errors').css("display", "none");
+      $('#save-errors').css("display", "none");
       $('.progress').css("display", "block"); // show upload in progress msg
     }
+
   });
 });
