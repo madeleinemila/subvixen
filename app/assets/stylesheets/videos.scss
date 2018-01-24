@@ -54,3 +54,44 @@ h5 {
 #upload-errors {
   padding: 2rem 0;
 }
+
+// ** upload spinner
+
+.spinner {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.square1, .square2 {
+  background-color: $browser-blue;
+  width: 0.4rem;
+  height: 0.4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: move 2s ease infinite;
+  animation: move 2s ease infinite;
+}
+
+.square2 {
+  background-color: rgba(1, 1, 1, 0);
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes move {
+  25% {
+    transform: translateX(4rem);
+  }
+  50% {
+    transform: translateX(4rem) translateY(4rem);
+  }
+  75% {
+    transform: translateY(4rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
