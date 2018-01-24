@@ -211,11 +211,11 @@ const getPixelHex = function( context, x, y ) {
 
 // ~~~~~ Node template for Fixture log
 const fLogTemplate = function( posNum, fid, x, y ) {
-  return `<p>
-    # <input type="number" class="f-param f-posnum" value="${ posNum }" data-prop="pos" data-fid="${ fid }"/>
-    x: <input type="number" class="f-param" value="${ x }" data-prop="x" min="0" max="${ vw - 1 }" data-fid="${ fid }"/>
-    y: <input type="number" class="f-param" value="${ y }" data-prop="y" min="0" max="${ vh - 1 }" data-fid="${ fid }"/>
-    <button class="f-delete" data-fid="${ fid }">&times;</button>
+  return `<p class="flex-container-row">
+    # <input type="number" class="f-param f-posnum flex-3" value="${ posNum }" data-prop="pos" data-fid="${ fid }"/>
+    x:&nbsp;<input type="number" class="f-param flex-3" value="${ x }" data-prop="x" min="0" max="${ vw - 1 }" data-fid="${ fid }"/>
+    y:&nbsp;<input type="number" class="f-param flex-3" value="${ y }" data-prop="y" min="0" max="${ vh - 1 }" data-fid="${ fid }"/>
+    <button class="f-delete flex-1" data-fid="${ fid }">&times;</button>
   </p>`;
 };
 

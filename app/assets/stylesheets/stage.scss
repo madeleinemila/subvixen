@@ -95,7 +95,7 @@ $width-canvas: 360px;
   font-family: Monaco, monospace;
   font-size: 0.6rem;
   color: $off-white;
-  overflow: scroll;
+  overflow-y: auto;
   height: $height-stage-component;
 }
 
@@ -181,4 +181,17 @@ button.button-med {
   font-size: 0.8em;
   color: $browser-blue;
   text-transform: uppercase;
+}
+
+.fixtures-container {
+  height: 800px;
+  overflow-y: auto;
+}
+
+#fixtures-main {
+  margin-right: 1rem;
+}
+
+.inline {
+  display: inline-block;
 }

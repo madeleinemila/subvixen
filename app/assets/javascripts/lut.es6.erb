@@ -49,6 +49,6 @@ const stringifyLUT = function() {
 
 const displayLUT = function() {
   $('#lut').empty(); // clear previous code
-  const lutNode = $(`<p class=code>${ lutString }</p>`).hide().fadeIn(1000);
+  const lutNode = $(`<p class="code scroll">${ lutString }</p>`).hide().fadeIn(1000);
   lutNode.appendTo('#lut');
 };

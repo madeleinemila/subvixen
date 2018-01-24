@@ -1,3 +1,8 @@
+let dupTest = {
+  posNums: [],
+  // prevPosNums: [],  // storing for highlighting/dehighlighting of duplicate position numbers
+};
+
 
 $('.pages.stage').ready(function() {
 
@@ -48,17 +53,25 @@ $('.pages.stage').ready(function() {
         default:
           console.log( `Invalid property data` );
       }
-      const posNums = getPosNums();
+      // *** HIGHLIGHTING DUPLICATE POSITION NUMBER
+      dupTest.posNums = getPosNums();
       // if this is a posNum field that was changed
-      if ( $(this).data().prop === 'pos') {
+      if ( $(this).data().prop === 'pos' ) {
         // see if this posNum has already been used
-        const occurs = _(posNums).countBy(function(n) {
+        const occurs = _(dupTest.posNums).countBy(function(n) {
           return n === value;
         });
         if (occurs.true > 1) {
           $(this).addClass('dup');
         } else {
           $(this).removeClass('dup');
+        }
+        //   TODO better implementation to consider
+        //   if more than one dup created concurrently
+        // if all values only occur once, remove highlight
+        if ( dupTest.posNums.length === _(dupTest.posNums).uniq().length ) {
+          // remove highlight on other fields
+          $('.f-param').removeClass('dup');
         }
       }
 
@@ -68,6 +81,7 @@ $('.pages.stage').ready(function() {
       } else {
         refresh();
       }
+      // dupTest.prevPosNums = dupTest.posNums.slice(); TODO part of better implementation
   });  // end on change input
 
 
