@@ -1,13 +1,33 @@
 <div class="new-container container">
   <h1>UPLOAD</h1>
 
+  <!-- FORM -->
+  <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
+
+    <!-- form body -->
+    <fieldset>
+      <%= form.label :file, :class => "plain-text" %>
+      <%= form.file_field :file %>
+    </fieldset>
+    <fieldset>
+      <%= form.label :name, :class => "plain-text" %>
+      <%= form.text_field :name, :required => true %>
+    </fieldset>
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+
   <!-- ** if errors from prev cloudinary upload attempt -->
   <% if @upload_error %>
     <div id="upload-errors">
-      <h3>Sorry, your video could not be uploaded.</h3>
+      <p class="plain-text">Sorry, your video could not be uploaded.</p>
       <ul>
         <!-- keeping in ul for consistent aesthetic -->
-        <li><%= @upload_error %></li>
+        <li class="plain-text highlight"><%= @upload_error %></li>
       </ul>
     </div>
   <% end %>
@@ -24,29 +44,10 @@
     </div>
   <% end %>
 
-  <!-- FORM -->
-  <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
-
-    <!-- form body -->
-    <fieldset>
-      <%= form.label :file %>
-      <%= form.file_field :file %>
-    </fieldset>
-    <fieldset>
-      <%= form.label :name %>
-      <%= form.text_field :name, :required => true %>
-    </fieldset>
-
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-
 
   <!-- PROGRESS -->
   <div class="progress">
-    <p>Upload in progress...</p>
+    <p class="plain-text">Upload in progress...</p>
   </div>
 
 </div>

@@ -57,11 +57,21 @@ h1 {
   font-weight: normal;
 }
 
+.heading-home {
+  @extend h1;
+  margin-bottom: 0;
+}
+
 h2 {
   font-weight: normal;
   font-size: 1.25rem;
 }
 
+.subheading-home {
+  @extend h2;
+  margin-top: 0;
+  color: $highlight;
+}
 
 button {
   border-radius: 0;
@@ -154,6 +164,10 @@ a:hover {
   padding-right: 1rem;
   text-transform: uppercase;
   font-size: 0.75rem;
+}
+
+.highlight {
+  color: $highlight;
 }
 
 .highlight-hover:hover {

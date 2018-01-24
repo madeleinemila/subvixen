@@ -6,15 +6,20 @@ class VideosController < ApplicationController
 
   def create
     begin
+      if params[:video][:file].nil?
+        @upload_error = "Please choose a video file to upload"
+        @video = Video.new
+        render :new and return
+      end
       cloudinary = Cloudinary::Uploader.upload( params[:video][:file],
         :resource_type => :video,
         :eager => [
           { :format => "mp4", :width => 640, :crop => "limit" },
           { :format => "mp4", :width => 360, :crop => "limit" },
         ],
-        :eager_async => false, # TODO could have eager callback and do async?
+        :eager_async => false,
       )
-      # TODO also trim length
+      # TODO limit or trim length
       # TODO handle sizes more than 40mb
     rescue CloudinaryException => e
       @upload_error = e.message
@@ -23,7 +28,6 @@ class VideosController < ApplicationController
     end
 
     # TODO also client side validations - Cloudinary suggest their jQuery way
-    # TODO add eager transformations
     @video = Video.new(video_params)
     @video.url = cloudinary["secure_url"]
     @video.transform_url = cloudinary["eager"][0]["secure_url"]

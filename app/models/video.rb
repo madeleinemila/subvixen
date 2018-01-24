@@ -12,4 +12,5 @@
 #
 
 class Video < ApplicationRecord
+  validates :name, :url, :transform_url, :transform_sml_url, presence: true
 end

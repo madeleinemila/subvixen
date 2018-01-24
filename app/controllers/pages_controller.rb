@@ -2,8 +2,11 @@ class PagesController < ApplicationController
   def home
   end
 
+  def about
+  end
+
   def rig
-    # make session rig falsey for user to draw rig from scratch
+    # make session rig false for user to draw rig from scratch
     session[:rig] = false
   end
 
