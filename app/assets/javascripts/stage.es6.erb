@@ -84,30 +84,12 @@ $('.pages.stage').ready(function() {
         fixtureLogAppend( _(fixtures).last() );
     };
 
-
     // when video plays, draw to the canvases (canvi?)
     video.addEventListener('play', drawVideo, false);
 
-
-
-
-
   }, false); // explicit false re useCapture for older browser compat
 
-
-
-
-
-
-
-
-
-
-
 }); // end page ready
-
-
-
 
 
 
@@ -167,7 +149,6 @@ const drawNewStageFrame = function() {
 const drawVideo = function() {
   if (video.paused || video.ended) {
     gen = false; // reset gen flag if nec
-    // prevTime = 0;
     return;
   }
   drawNewStageFrame(); // draws new frame of video to stage canvas
@@ -234,19 +215,6 @@ const fixtureLog = function( sort=false ) {
       node.appendTo( "#fixtures-main" );
     }
 };
-
-// fixture duplicates - check for fixtures with same position number
-// const checkforDups = function( fixture ) {
-//   const srcPosNum = fixture.posNum;
-//   const dupChecker = _.matcher({ posNum: srcPosNum });
-//   const dups = _.filter( fixtures, dupChecker );
-//   if ( dups.length > 1 ) {
-//     // class name for dup highlighting
-//     return "dup";
-//   } else {
-//     return "";
-//   }
-// };
 
 
 // fixture append - if added a new fixture by mouse click, don't want to redraw whole thing re sorting

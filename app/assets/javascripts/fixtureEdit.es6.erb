@@ -1,13 +1,12 @@
 let dupTest = {
   posNums: [],
-  // prevPosNums: [],  // storing for highlighting/dehighlighting of duplicate position numbers
+  // prevPosNums: [],  // storing for future better highlighting/dehighlighting of duplicate position numbers
 };
 
 
 $('.pages.stage').ready(function() {
 
   const getFixtureId = function( node ) {
-    // console.log(node.data('fid'));
     return node.data('fid');
   }
 
@@ -112,7 +111,7 @@ $('.pages.stage').ready(function() {
 
 }); // end doc ready
 
-const refresh = function() { // TODO might be other occurrences that could be refactored
+const refresh = function() {
     drawFixtures();
     simCtx.clearRect(0, 0, vw, vh);
     drawSim();

@@ -10,11 +10,6 @@ $('.pages.stage').ready(function() {
     if (click % 2 === 0) {
       simCtx.clearRect( 0, 0, vw, vh ); // clear previous render
       if (fixtures.length > 0) {
-          // f.color = getPixelHex( stageCtx, f.x, f.y );
-          // drawCircle( f.x, f.y, olaySize, 'white', borderSize, f.color, simCtx );
-          // simCtx.font = "14px Helvetica";
-          // simCtx.fillStyle = "#222";
-          // numToDisplay( f, borderSize, charInc );
         drawSimOverlay();
         $(this).text( 'HIDE OVERLAY' );
         $(this).addClass( 'generating' );

@@ -1,7 +1,4 @@
 
-// TODO progmem storage
-
-
 #include <Adafruit_NeoPixel.h>
 
 #define PIN     6
@@ -43,7 +40,7 @@ void setup() {
 
 
 void loop() {
-  
+
    unsigned long currentMillis = millis();
 
    if (currentMillis - previousMillis >= interval) {
@@ -52,7 +49,7 @@ void loop() {
       // Serial.println(currentMillis);
       // Serial.print("frame: ");
       // Serial.println(fr);
-      
+
       // save this is a time LEDs were updated
       previousMillis = currentMillis;
 
@@ -72,12 +69,10 @@ void loop() {
         strip.setPixelColor(i, c);
         strip.show();
       };
-      
+
       fr++;
       if (fr == totalFrames) {
         fr = 0;
       }
    }
 }
-
-

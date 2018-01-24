@@ -27,7 +27,6 @@ class VideosController < ApplicationController
       render :new and return
     end
 
-    # TODO also client side validations - Cloudinary suggest their jQuery way
     @video = Video.new(video_params)
     @video.url = cloudinary["secure_url"]
     @video.transform_url = cloudinary["eager"][0]["secure_url"]
@@ -57,6 +56,6 @@ class VideosController < ApplicationController
 
   private
   def video_params
-    params.require(:video).permit(:name)  # TODO add tags?
+    params.require(:video).permit(:name)
   end
 end
