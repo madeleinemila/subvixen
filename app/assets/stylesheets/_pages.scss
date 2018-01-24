@@ -155,3 +155,11 @@ a:hover {
   text-transform: uppercase;
   font-size: 0.75rem;
 }
+
+.highlight-hover:hover {
+  color: $highlight !important;
+}
+
+.lowlight-hover:hover {
+  color: $browser-blue !important;
+}

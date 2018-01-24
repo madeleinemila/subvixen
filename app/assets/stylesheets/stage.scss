@@ -156,6 +156,11 @@ button.button-med {
   background-color: $dark-grey !important;
 }
 
+.symmetry-on {
+  @extend .generating;
+  background-color: lighten( $dark-grey, 5% ) !important;
+}
+
 .dup {
   background-color: $highlight;
   color: $dark-grey;

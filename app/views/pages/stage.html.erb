@@ -4,8 +4,8 @@
     <h2>STAGE</h2>
     <div class="controls stage-bonus-controls">
       <div class="flex-2 plain-text info-text">Click below to add fixtures</div>
-      <button class="flex-1 button-med">COPY H</button>
-      <button class="flex-1 button-med">COPY V</button>
+      <button class="flex-1 button-med lowlight-hover" id="dup-h">DUP H</button>
+      <button class="flex-1 button-med lowlight-hover" id="dup-v">DUP V</button>
     </div>
     <video id="stage-video" muted crossOrigin="anonymous" playsinline>
       <source src="<%= @video.transform_sml_url %>">
@@ -34,7 +34,7 @@
     <h2>CODE</h2>
 
     <div class="code-controls controls">
-      <button class="flex-1 copy button-med">Copy to clipboard</button>
+      <button class="flex-1 copy button-med highlight-hover">Copy to clipboard</button>
       <div class="flex-1 copy-notice"></div>
     </div>
 
