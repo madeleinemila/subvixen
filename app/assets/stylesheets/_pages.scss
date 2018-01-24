@@ -5,6 +5,7 @@ $off-white: #fdfdfd;
 $dark-grey: #292929;
 $highlight: #FFE29D;
 
+$nav-height: 3rem;
 
 * {
   // border: 1px solid pink;
@@ -37,13 +38,13 @@ body {
 }
 
 nav {
-  height: 3rem;
+  height: $nav-height;
   background-color: lighten( $dark-grey, 10%);
   margin-bottom: 2rem;
 }
 
 .logo {
-  padding: 0 1rem 0 2rem;
+  padding: 0 0.2rem 0 2rem;
   color: $dark-grey;
   font-size: 2rem;
   font-weight: bold;
@@ -135,4 +136,21 @@ a:hover {
   color: $highlight;
   text-transform: uppercase;
   font-size: 1rem;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-large {
+  flex: 12;
+  line-height: $nav-height;
+}
+
+.about-right {
+  text-align: right;
+  line-height: $nav-height;
+  padding-right: 1rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }

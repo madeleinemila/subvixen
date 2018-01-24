@@ -2,8 +2,11 @@
   <h1>VIDEO LIBRARY</h1>
 
   <ul>
-    <% @videos.each do |v| %>
-      <li><%= link_to v.name, video_path(v) %></li>
+    <% @videos.each_with_index do |v, i| %>
+      <div class="thumb-container">
+        <%= link_to image_tag( @thumbs[i] ), video_path(v) %>
+        <h5><%= v.name %></h5>
+      </div>
     <% end %>
   </ul>
 </div>

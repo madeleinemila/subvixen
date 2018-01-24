@@ -37,6 +37,13 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+    @thumbs = []
+    @videos.each do |v|
+      segs = /(https:\/\/res.cloudinary.com\/mrmy\/video\/upload\/)(.*\.)/.match( v.url )
+      thumb = segs[1] + "so_0,w_150,h_150,c_fill/" + segs[2] + "jpg"
+      @thumbs.push thumb
+    end
+    @thumbs
   end
 
   def show

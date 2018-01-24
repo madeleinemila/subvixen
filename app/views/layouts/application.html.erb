@@ -13,10 +13,17 @@
 
   <!-- for jquery-readyselector -->
   <body class="<%= controller_name %> <%= action_name %>">
-    <nav>
-      <%= link_to 'sV', root_path, :class => "logo", :data => {
-          :confirm => "Ready to go back to the start?\nAre you sure you want to lose your current progress?"} %>visual code generator
-      <%= link_to 'about', root_path %>
+    <nav class="flex-container">
+      <div class="flex-1">
+        <%= link_to 'sV', root_path, :class => "logo", :data => {
+          :confirm => "Ready to go back to the start?\nAre you sure you want to lose your current progress?"} %>
+        </div>
+      <div class="flex-large">
+                  visual code generator
+      </div>
+      <div class="flex-1 about-right">
+        <%= link_to 'about', root_path, :class => "align-right" %>
+      </div>
     </nav>
 
     <%= yield %>
