@@ -41,14 +41,23 @@ $('.pages.stage').ready(function() {
       addFixtureToArray( mousePos.x, mousePos.y );
       let xMirrored, yMirrored;
       if (sym.symH) {
-        if (mousePos.x !== vw / 2) {
+        if (mousePos.x !== vw / 2) { // explicitly ignoring if exact center is clicked
           xMirrored = vw - mousePos.x;
         }
         addFixtureToArray( xMirrored, mousePos.y );
       }
-
-
+      if (sym.symV) {
+        if (mousePos.y !== vh / 2) {
+          yMirrored = vh - mousePos.y;
+        }
+        addFixtureToArray( mousePos.x, yMirrored );
+      }
+      if (sym.symH && sym.symV) {
+        addFixtureToArray( xMirrored, yMirrored );
+      }
     });
+
+
 
     const addFixtureToArray = function( x, y ) {
         fixtures.push({
