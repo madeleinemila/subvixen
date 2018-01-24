@@ -93,18 +93,19 @@ $('.pages.stage').ready(function() {
 
 // get fixtures from selected rig in rig library
 const rigLibraryFixtures = function() {
-  gon.fixtures.forEach((f) => {
-    fixtures.push({
-      fid: f.id,
-      x: f.x,
-      y: f.y,
-      color: getPixelHex( stageCtx, f.x, f.y ),
-      posNum: f.position_number,
+  if (typeof gon !== "undefined") {
+    gon.fixtures.forEach((f) => {
+      fixtures.push({
+        fid: f.id,
+        x: f.x,
+        y: f.y,
+        color: getPixelHex( stageCtx, f.x, f.y ),
+        posNum: f.position_number,
+      });
+      // make placeholder in lut
+      lut.push( new Array(1) );
     });
-    // make placeholder in lut
-    lut.push( new Array(1) );
-  });
-
+  }
 };
 
 

@@ -108,6 +108,14 @@ $width-canvas: 360px;
   flex: 1;
 }
 
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
 .copy-notice {
   align-self: center;
   font-size: 0.8rem;
@@ -156,4 +164,16 @@ button.button-med {
 .dup:focus {
   background-color: $highlight;
   color: $dark-grey;
+}
+
+.stage-bonus-controls {
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info-text {
+  font-size: 0.8em;
+  color: $browser-blue;
+  text-transform: uppercase;
 }
