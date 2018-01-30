@@ -1,24 +1,33 @@
-# README
+# SUBVIXEN
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Generate code from video using pixel mapping
 
-Things you may want to cover:
+## Built with:
 
-* Ruby version
+- JavaScript, inc. jQuery
+- Ruby on Rails
+- HTML5, utilising native video and canvas elements
+- CSS3
 
-* System dependencies
 
-* Configuration
+## ABOUT
 
-* Database creation
+### When would I use Subvixen?
 
-* Database initialization
+Subvixen was designed for pixel-mapping applications, the most obvious of which is programming collections of LEDs.
 
-* How to run the test suite
+Some reasons you might find yourself wanting to use pixel-mapping:
 
-* Services (job queues, cache servers, search engines, etc.)
+- Your effect is visually or mathematically intricate.
+-- You might want an effect that is very complex, random or hard to code... but easy to represent (or already exists) as a video.
 
-* Deployment instructions
+- Your effect is spatially aware.
+-- You might want to achieve effects like chases that respond correctly to the real-world spacing of your LEDs, but it could be complex or inflexible to write your code taking into account irregular spacing.
 
-* ...
+- You don't think in code.
+-- It might be quicker for you to make a video than it is to write code.
+
+
+### What are the limitations of Subvixen?
+
+Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE (in C). However, the lookup table generated within the code could easily be pulled out and used in other implementations.
