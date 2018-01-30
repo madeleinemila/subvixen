@@ -11,7 +11,7 @@ Generate code from video using pixel mapping
 
 ## Deployed on Heroku:
 
-Check it out and start generating your own code from video at [http://subvixen.herokuapp.com/](http://subvixen.herokuapp.com/){:target="_blank"}
+Check it out and start generating your own code from video at [https://subvixen.herokuapp.com/](https://subvixen.herokuapp.com/)
 
 ## About:
 
