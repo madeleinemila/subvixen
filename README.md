@@ -53,6 +53,8 @@ Future features that would take Subvixen from proof-of-concept to a richer app i
 
 - More sophisticated Arduino code, to account for other hardware types and data compression for example. This should involve using a different data structure than a multi-dimensional array.
 
+- Better responsive design
+
 - Option of down-sampling RGB values to allow for greater compression, since subtle color differences aren't perceivable on LEDs
 
 - User logins, to allow users to save their progress as well as private videos and rig configurations
