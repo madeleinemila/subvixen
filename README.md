@@ -2,16 +2,23 @@
 
 Generate code from video using pixel mapping
 
+## A Proof of Concept:
+
+I created Subvixen as a proof-of-concept for an in-browser hobbyist pixel-mapper: an app that could take a video, take a drawing of points on that video, sample the RGB data at each point, and generate a lookup table and the necessary program code to provide those same RGB values to hardware via Arduino.
+
+
 ## Built with:
 
 - JavaScript, inc. jQuery (v1.12.4)
 - Ruby (v2.4.2) on Rails (v5.1.4)
 - HTML5, utilising native video and canvas elements
-- CSS3
+- CSS3, SASS
+
 
 ## Deployed on Heroku:
 
 Check it out and start generating your own code from video at [https://subvixen.herokuapp.com/](https://subvixen.herokuapp.com/)
+
 
 ## About:
 
@@ -37,3 +44,44 @@ Some reasons you might find yourself wanting to use pixel-mapping:
 ### What are the limitations of Subvixen?
 
 Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE (in C). However, the lookup table generated within the code could easily be pulled out and used in other implementations.
+
+
+## FUTURE VERSIONS:
+
+Future features that would take Subvixen from proof-of-concept to a richer app include:
+
+- More sophisticated Arduino code, to account for other hardware types and data compression for example. This should involve using a different data structure than a multi-dimensional array.
+
+- Option of down-sampling RGB values to allow for greater compression, since subtle color differences aren't perceivable on LEDs
+
+- User logins, to allow users to save their progress as well as private videos and rig configurations
+
+- Limit uploading of videos to only within user logins, so the public library isn't open to trolls
+
+- Handle larger video sizes (currently 40MB limit)
+
+- Handle audio, for use cases where the pixel-mapped hardware might be synced with music
+
+- Improve precision of Arduino code timing, so if a user has synchronised video (and therefore the code) with audio, the hardware will stay in sync IRL.
+
+- A more comprehensive public video library
+
+- Basic video manipulation features in the browser, such as speed changes, crops, color adjustments or basic trims and edits
+
+- A more comprehensive preset rig library
+
+- A more fully-featured rig drawing tool, which could include a shapes library, graphing, mirroring over more axes, and an import feature
+
+- Drag and drop fixture adjustments
+
+- Allow repositioning groups of fixtures or entire rig as one unit
+
+- Tweak the overlay view to allow for overlapping fixture icons
+
+- Support code generation in other languages
+
+- Include option to tweak overall pixel brightness
+
+- Add tags to videos for better searching
+
+- Allow users to change color of fixture icons on the stage to give better visibility
