@@ -6,6 +6,7 @@ Generate code from video using pixel mapping
 
 I created Subvixen as a proof-of-concept for an in-browser hobbyist pixel-mapper: an app that could take a video, take a drawing of points on that video, sample the RGB data at each point, and generate a lookup table and the necessary program code to provide those same RGB values to hardware via Arduino.
 
+![Subvixen quick demo](http://res.cloudinary.com/mrmy/image/upload/v1517406335/demo_t5whon.gif)
 
 ## Built with:
 
@@ -62,7 +63,9 @@ Future features that would take Subvixen from proof-of-concept to a richer app i
 
 - Handle audio, for use cases where the pixel-mapped hardware might be synced with music
 
-- Improve precision of Arduino code timing, so if a user has synchronised video (and therefore the code) with audio, the hardware will stay in sync IRL.
+- Improved precision of Arduino code timing, so if a user has synchronised video (and therefore the code) with audio, the hardware will stay in sync IRL.
+
+- Improved interface for changing fixture #'s - the current idea is that a user can change a fixture's number to any number, and the lookup table is generated in fixture # order. It allows duplicate numbers although it highlights the input field in the moment a user enters a duplicate. I made it a flexible system to allow for people's different rig/circuit numbering systems, but it needs to be fine-tuned.
 
 - A more comprehensive public video library
 
