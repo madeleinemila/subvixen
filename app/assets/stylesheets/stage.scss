@@ -70,6 +70,11 @@ $width-canvas: 360px;
   //////////      CODE MAIN SECTION      //////////
   /////////////////////////////////////////////////
 
+  #jump-to-code {
+    @extend .generating;
+    display: none;
+  }
+
   .code-main {
     @extend .stage-main;
     flex: 3;
@@ -183,7 +188,7 @@ button.button-med {
 }
 
 .fixtures-container {
-  height: 800px;
+  max-height: 800px;
   overflow-y: auto;
 }
 

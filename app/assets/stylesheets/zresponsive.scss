@@ -2,14 +2,14 @@
   .stage-main canvas {
     width: 100%;
   }
-  #generate {
+  #generate, #jump-to-code {
     width: 100%;
   }
   #stage-video-controls {
     width: 100%;
   }
   .fixtures-container {
-    height: 300px;
+    max-height: 300px;
   }
   .code-display, .code-main {
     min-height: 300px !important;
