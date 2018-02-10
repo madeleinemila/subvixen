@@ -27,6 +27,10 @@ $('.pages.stage').ready(function() {
       drawNewStageFrame();
       refresh();
       fixtureLog();
+      // fix for mobile not working on 'generate' unless video has already played
+      if (window.innerWidth <= 768) {
+        video.play();
+      }
     }, 300);
 
 

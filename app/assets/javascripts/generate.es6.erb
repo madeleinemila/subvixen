@@ -11,6 +11,7 @@ $('.pages.stage').ready(function() {
     console.log(`Starting pixel generation...`);
     // change look of generate button
     $(this).addClass( 'generating' );
+    $(this).text("GENERATING...");
     video.pause(); // in case already playing
     setTimeout(function() {  // allowing time for video.pause() to complete
       // clear previous lut values
@@ -63,6 +64,7 @@ $('.pages.stage').ready(function() {
       displayLUT();
       // return generate button to orig look
       $('#generate').removeClass( 'generating' );
+      $('#generate').text("GENERATE");
     }
 
   });
