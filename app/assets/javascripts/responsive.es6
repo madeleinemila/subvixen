@@ -12,6 +12,9 @@ $(window).resize(function() {
     } else {
       restoreByline();
     }
+    if (window.innerWidth > 720) { // if stage and main are side-by-side
+      $('#jump-to-code').css({ 'display': 'none' });
+    }
 });
 
 

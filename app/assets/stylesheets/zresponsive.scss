@@ -1,12 +1,19 @@
 @media only screen and (max-width: 720px) {  // when code display wraps to under stage-main
   .stage-main canvas {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   #generate, #jump-to-code {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  #generate {
+    margin-bottom: 3rem;
   }
   #stage-video-controls {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .fixtures-container {
     max-height: 300px;
@@ -51,10 +58,4 @@
   li.link-xlge {
     display: block;
   }
-}
-
-@media only screen and (max-width: 424px) {
-  // .stage-main canvas {
-  //   width: 100%;
-  // }
 }
