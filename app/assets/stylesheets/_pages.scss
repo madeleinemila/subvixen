@@ -46,6 +46,15 @@ nav {
   letter-spacing: -2px;
 }
 
+#logo-byline {
+  letter-spacing: 1px;
+  color: rgba($off-white, 0.3);
+}
+
+.flex-logo {
+  max-width: 66px;
+}
+
 h1 {
   font-weight: normal;
 }
@@ -64,6 +73,14 @@ h2 {
   @extend h2;
   margin-top: 0;
   color: $highlight;
+}
+
+.home-to-new {
+  margin-top: 3rem;
+}
+
+.green-link {
+  color: lightseagreen;
 }
 
 button {
@@ -102,6 +119,11 @@ a:hover {
 
 .plain-text {
   letter-spacing: 1px;
+}
+
+.sub-nav {
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .emphasize {
