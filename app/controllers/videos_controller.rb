@@ -19,7 +19,7 @@ class VideosController < ApplicationController
         ],
         :eager_async => false,
       )
-      # TODO limit or trim length
+      # TODO limit or trim length functionality
       # TODO handle sizes more than 40mb
     rescue CloudinaryException => e
       @upload_error = e.message

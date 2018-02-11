@@ -188,10 +188,6 @@ a:hover {
   color: $browser-blue !important;
 }
 
-
-// scrollbar ****
-// TODO test cross browser compat
-
 .scroll::-webkit-scrollbar {
   background-color: $dark-grey;
   width: 0.7rem;
@@ -228,4 +224,9 @@ h3.about {
   padding-bottom: 1rem;
   color: lightseagreen;
   line-height: 19px;
+}
+
+.sub-point-white {
+  @extend .sub-point;
+  color: $off-white;
 }

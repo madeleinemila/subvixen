@@ -17,6 +17,23 @@
 
 
     <h3 class="about">What are the limitations of Subvixen?</h3>
-    <p class="plain-text">Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE. However, the lookup table generated within the code could easily be pulled out and used in other implementations.</p>
+    <p class="plain-text">Subvixen is currently generating code for:
+      <ul>
+        <li class="sub-point">Neopixel LEDs and the Arduino IDE</li>
+        <li class="sub-point-white">However, the lookup table generated within the code could easily be pulled out and used in other implementations.</li>
+      </ul>
+    </p>
+    <p class="plain-text">Subvixen has been tested on:
+      <ul>
+        <li class="sub-point">Chrome 63+, Firefox 57+, Safari 10+ and iOS Safari 11+</li>
+        <li class="sub-point-white">But please go for it and try it out if you're on a different browser.</li>
+      </ul>
+    </p>
+    <p>Microcontroller memory:
+      <ul>
+        <li class="sub-point-white">Subvixen is currently generating uncompressed lookup tables, with 24-bit RGB color values. Depending on your microcontroller's memory, the memory capacity might be too small for your effect. As an example, on an Adafruit Flora you could store approx 15 seconds worth of unique values for 20 LEDs before the memory is full.<br />
+        Future Subvixen updates will implement compression.</li>
+      </ul>
+    </p>
   </div>
 </div>
