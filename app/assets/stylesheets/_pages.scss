@@ -234,6 +234,16 @@ a:hover {
   max-width: 720px;
 }
 
+video.video-about {
+  max-width: 480px;
+  width: 100%;
+}
+
+.about-video {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 h3.about {
   font-style: italic;
   margin-top: 4rem;
