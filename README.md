@@ -23,9 +23,9 @@ Check it out and start generating your own code from video at [https://subvixen.
 
 ## About:
 
-### How to use Subvixen in 99 seconds:
+### How to use Subvixen in 99 seconds
 
-![Subvixen walkthrough](http://res.cloudinary.com/mrmy/video/upload/v1518438047/Walkthrough_muf2co.mov)
+![Go to the Subvixen walkthrough video](https://youtu.be/ZCpgYL-KHDM)
 
 ### When would I use Subvixen?
 
