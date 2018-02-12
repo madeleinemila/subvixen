@@ -25,7 +25,7 @@ Check it out and start generating your own code from video at [https://subvixen.
 
 ### How to use Subvixen in 99 seconds
 
-![Go to the Subvixen walkthrough video](https://youtu.be/ZCpgYL-KHDM)
+[Go to the Subvixen walkthrough video](https://youtu.be/ZCpgYL-KHDM)
 
 ### When would I use Subvixen?
 
