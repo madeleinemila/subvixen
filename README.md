@@ -55,6 +55,10 @@ Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE (in 
 
 Future features that would take Subvixen from proof-of-concept to a richer app include:
 
+- Test coverage.
+
+- Refactoring, especially with extending/scaling in mind; for example, this could be refactored with a more OOP approach, that could then make it easier to extend and unit test.
+
 - More sophisticated Arduino code, to account for other hardware types and data compression for example. This should involve using a different data structure than a multi-dimensional array.
 
 - Better responsive design
