@@ -1,22 +1,33 @@
 <div class="new-container container">
   <h1>UPLOAD</h1>
 
+  <div class="infobox">
+    <div class="infobox-icon">⚠️</div>
+    <div>
+      <p>Sorry, this demo version no longer supports user video uploads.</p>
+      <p>Please check out the <%= link_to 'video library', videos_path %> instead.</p>
+    </div>
+  </div>
+
   <!-- FORM -->
   <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
 
     <!-- form body -->
     <fieldset>
       <%= form.label :file, :class => "plain-text" %>
-      <%= form.file_field :file %>
+      <!-- <%= form.file_field :file %> -->
+      <%= form.file_field :file, :disabled => true %>
     </fieldset>
     <fieldset>
       <%= form.label :name, :class => "plain-text" %>
-      <%= form.text_field :name, :required => true %>
+      <!-- <%= form.text_field :name, :required => true %> -->
+      <%= form.text_field :name, :disabled => true %>
     </fieldset>
 
 
     <div class="actions">
-      <%= form.submit %>
+      <!-- <%= form.submit %> -->
+      <%= form.submit :disabled => true %>
     </div>
   <% end %>
 
