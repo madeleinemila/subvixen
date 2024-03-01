@@ -11,7 +11,7 @@ I created Subvixen as a proof-of-concept for an in-browser hobbyist pixel-mapper
 ## Built with:
 
 - JavaScript, inc. jQuery (v1.12.4)
-- Ruby (v2.7.8) on Rails (v6.1)
+- Ruby (v2.4.2) on Rails (v5.1.4) -> Updated to Ruby (v3.2.2) on Rails (v7.0)
 - HTML5, utilising native video and canvas elements
 - CSS3, SASS
 
