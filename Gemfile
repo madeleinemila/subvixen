@@ -8,9 +8,9 @@ end
 # For Heroku deployment
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -20,8 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# ** Avoid Nokogiri error
-gem 'loofah', '2.20.0'
+# Avoid "already initialized constant" errors
+# Ref: https://github.com/ruby/net-imap/issues/16#issuecomment-803086765
+gem "net-http"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
