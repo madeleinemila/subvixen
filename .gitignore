@@ -19,3 +19,7 @@
 .byebug_history
 
 /vendor
+
+/config/master.key
+
+.vscode
