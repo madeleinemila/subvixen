@@ -12,7 +12,12 @@ class PagesController < ApplicationController
 
 
   def stage
-    @video = Video.find session[:number]
+    if helpers.use_db
+      @video = Video.find session[:number]
+    else
+      @video = helpers.get_video session[:number]
+    end
+
     if session[:rig]
       @rig = Rig.find session[:rig]
       gon.rig = @rig

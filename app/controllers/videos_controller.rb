@@ -39,7 +39,12 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = Video.all
+    if helpers.use_db
+      @videos = Video.all
+    else
+      # Use example videos from Cloudinary
+      @videos = [helpers.get_video(1), helpers.get_video(2), helpers.get_video(3), helpers.get_video(4)]
+    end
     @thumbs = []
     @videos.each do |v|
       segs = /(https:\/\/res.cloudinary.com\/mrmy\/video\/upload\/)(.*\.)/.match( v.url )
@@ -50,7 +55,14 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find params[:id]
+    if helpers.use_db
+      @video = Video.find params[:id]
+    else
+      # Use example videos from Cloudinary
+      id = params[:id].to_i
+      @video = helpers.get_video(id)
+    end
+
     session[:number] = @video.id # persisting in session hash to use in stage
   end
 
