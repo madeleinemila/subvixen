@@ -11,15 +11,13 @@ I created Subvixen as a proof-of-concept for an in-browser hobbyist pixel-mapper
 ## Built with:
 
 - JavaScript, inc. jQuery (v1.12.4)
-- Ruby (v2.4.2) on Rails (v5.1.4)
+- Ruby (v2.4.2) on Rails (v5.2)
 - HTML5, utilising native video and canvas elements
 - CSS3, SASS
-
 
 ## Deployed on Heroku:
 
 Check it out and start generating your own code from video at [https://subvixen.herokuapp.com/](https://subvixen.herokuapp.com/)
-
 
 ## About:
 
@@ -45,11 +43,9 @@ Some reasons you might find yourself wanting to use pixel-mapping:
 
   It might be quicker for you to make a video than it is to write code.
 
-
 ### What are the limitations of Subvixen?
 
 Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE (in C). However, the lookup table generated within the code could easily be pulled out and used in other implementations.
-
 
 ## FUTURE VERSIONS:
 
