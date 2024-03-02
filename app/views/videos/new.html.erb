@@ -15,19 +15,19 @@
     <!-- form body -->
     <fieldset>
       <%= form.label :file, :class => "plain-text" %>
-      <%= form.file_field :file %>
-      <!-- <%= form.file_field :file, :disabled => true %> -->
+      <!-- <%= form.file_field :file %> -->
+      <%= form.file_field :file, :disabled => true %>
     </fieldset>
     <fieldset>
       <%= form.label :name, :class => "plain-text" %>
-      <%= form.text_field :name, :required => true %>
-      <!-- <%= form.text_field :name, :disabled => true %> -->
+      <!-- <%= form.text_field :name, :required => true %> -->
+      <%= form.text_field :name, :disabled => true %>
     </fieldset>
 
 
     <div class="actions">
-      <%= form.submit %>
-      <!-- <%= form.submit :disabled => true %> -->
+      <!-- <%= form.submit %> -->
+      <%= form.submit :disabled => true %>
     </div>
   <% end %>
 

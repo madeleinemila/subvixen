@@ -8,4 +8,4 @@ bundle exec rails assets:clean
 bundle exec rails db:migrate
 
 # if you have seeds to run add:
-bundle exec rails db:seed
+# bundle exec rails db:seed

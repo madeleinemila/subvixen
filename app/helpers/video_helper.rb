@@ -12,10 +12,10 @@ module VideoHelper
 
     if (id == 2)
       video.id = 2
-      video.name = "BNW Circles"
-      video.url = "https://res.cloudinary.com/mrmy/video/upload/v1709331743/qmh0odlngklpnagyebwp.mp4"
-      video.transform_url = "https://res.cloudinary.com/mrmy/video/upload/c_limit,w_640/v1709331743/qmh0odlngklpnagyebwp.mp4"
-      video.transform_sml_url = "https://res.cloudinary.com/mrmy/video/upload/c_limit,w_360/v1709331743/qmh0odlngklpnagyebwp.mp4"
+      video.name = "BNW Wave"
+      video.url = "https://res.cloudinary.com/mrmy/video/upload/v1709337386/ltzttaimdszrwsdfuqxq.mov"
+      video.transform_url = "https://res.cloudinary.com/mrmy/video/upload/c_limit,w_640/v1709337386/ltzttaimdszrwsdfuqxq.mp4"
+      video.transform_sml_url = "https://res.cloudinary.com/mrmy/video/upload/c_limit,w_360/v1709337386/ltzttaimdszrwsdfuqxq.mp4"
     end
 
     if (id == 3)
