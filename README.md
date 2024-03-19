@@ -2,24 +2,26 @@
 
 Generate code from video using pixel mapping
 
-## A Proof of Concept:
+## A Proof of Concept
 
 I created Subvixen as a proof-of-concept for an in-browser hobbyist pixel-mapper: an app that could take a video, take a drawing of points on that video, sample the RGB data at each point, and generate a lookup table and the necessary program code to provide those same RGB values to hardware via Arduino.
 
 ![Subvixen quick demo](http://res.cloudinary.com/mrmy/image/upload/v1517406335/demo_t5whon.gif)
 
-## Built with:
+## Built with
 
 - JavaScript, inc. jQuery (v1.12.4)
 - Ruby (v2.4.2) on Rails (v5.1.4) -> Updated to Ruby (v3.2.2) on Rails (v7.0)
 - HTML5, utilising native video and canvas elements
 - CSS3, SASS
 
-## Deployed on Heroku:
+## Deployed on Render
 
-Check it out and start generating your own code from video at [https://subvixen.herokuapp.com/](https://subvixen.herokuapp.com/)
+Check it out at [https://subvixen.onrender.com](https://subvixen.onrender.com/).
 
-## About:
+It may take several minutes load while the Render server starts up.
+
+## About
 
 ### How to use Subvixen in 99 seconds
 
@@ -47,7 +49,7 @@ Some reasons you might find yourself wanting to use pixel-mapping:
 
 Subvixen is currently generating code for Neopixel LEDs and the Arduino IDE (in C). However, the lookup table generated within the code could easily be pulled out and used in other implementations.
 
-## FUTURE VERSIONS:
+## FUTURE VERSIONS
 
 Future features that would take Subvixen from proof-of-concept to a richer app include:
 
