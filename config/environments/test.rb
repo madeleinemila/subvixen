@@ -34,7 +34,8 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
 
   # Store uploaded files on the local file system in a temporary directory.
-  config.active_storage.service = :test
+  # Note: DB use was decommissioned for demo deployment. Reenable if restoring db use.
+  # config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
 

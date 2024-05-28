@@ -5,11 +5,21 @@ class RigsController < ApplicationController
   end
 
   def index
-    @rigs = Rig.all
+    if helpers.use_db
+      @rigs = Rig.all
+    else
+      @rigs = [helpers.get_rig(1), helpers.get_rig(2)]
+    end
   end
 
   def show
-    @rig = Rig.find params[:id]
+    if helpers.use_db
+      @rig = Rig.find params[:id]
+    else
+      id = params[:id].to_i
+      @rig = helpers.get_rig(id)
+    end
+
     gon.rig = @rig
     @fixtures = @rig.fixtures
     gon.fixtures = @fixtures

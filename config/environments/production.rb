@@ -38,7 +38,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # Note: DB use was decommissioned for demo deployment. Reenable if restoring db use.
+  # config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -89,5 +90,6 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  # Note: DB use was decommissioned for demo deployment. Reenable if restoring db use.
+  # config.active_record.dump_schema_after_migration = false
 end

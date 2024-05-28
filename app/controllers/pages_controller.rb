@@ -19,7 +19,11 @@ class PagesController < ApplicationController
     end
 
     if session[:rig]
-      @rig = Rig.find session[:rig]
+      if helpers.use_db
+        @rig = Rig.find session[:rig]
+      else
+        @rig = helpers.get_rig session[:rig]
+      end
       gon.rig = @rig
       gon.fixtures = @rig.fixtures
     end

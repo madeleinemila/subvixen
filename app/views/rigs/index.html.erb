@@ -4,7 +4,11 @@
   <p class="plain-text">Click a rig to see a map of its layout</p>
   <ul>
     <% @rigs.each do |r| %>
-      <li class="list-spaced"><%= link_to r.name, rig_path(r), :class => "plain-text" %></li>
+      <li class="list-spaced"><%= link_to r.name, rig_path(r.id), :class => "plain-text" %></li>
+      <%#
+        Note: Different rig_path arg before decommissioning the db
+        rig_path(r)
+      %>
     <% end %>
   </ul>
 </div>

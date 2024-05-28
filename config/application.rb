@@ -1,6 +1,17 @@
 require_relative "boot"
 
-require "rails/all"
+# Note: DB use was decommissioned for demo deployment.
+# Uncomment require "rails/all" to reenable db use:
+# require "rails/all"
+# And comment out the following require statements:
+require "rails"
+require "active_model/railtie"
+require "active_job/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
+require "action_cable/engine"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

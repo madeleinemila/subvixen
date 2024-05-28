@@ -4,7 +4,11 @@
   <ul>
     <% @videos.each_with_index do |v, i| %>
       <div class="thumb-container">
-        <%= link_to image_tag( @thumbs[i] ), video_path(v) %>
+        <%= link_to image_tag( @thumbs[i] ), video_path(v.id) %>
+        <%#
+          Note: Different video_path arg before decommissioning the db
+          video_path(v)
+        %>
         <h5><%= v.name %></h5>
       </div>
     <% end %>

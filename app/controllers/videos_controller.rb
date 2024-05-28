@@ -1,7 +1,10 @@
 class VideosController < ApplicationController
 
   def new
-    @video = Video.new
+    @use_db = helpers.use_db
+    if @use_db
+      @video = Video.new
+    end
   end
 
   def create

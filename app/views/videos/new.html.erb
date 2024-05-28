@@ -10,59 +10,59 @@
   </div>
 
   <!-- FORM -->
-  <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
+  <% if @use_db %>
+    <%= form_for(@video, url: { action: 'create' }, html: { class: 'upload' }) do |form| %>
 
-    <!-- form body -->
-    <fieldset>
-      <%= form.label :file, :class => "plain-text" %>
-      <!-- <%= form.file_field :file %> -->
-      <%= form.file_field :file, :disabled => true %>
-    </fieldset>
-    <fieldset>
-      <%= form.label :name, :class => "plain-text" %>
-      <!-- <%= form.text_field :name, :required => true %> -->
-      <%= form.text_field :name, :disabled => true %>
-    </fieldset>
-
-
-    <div class="actions">
-      <!-- <%= form.submit %> -->
-      <%= form.submit :disabled => true %>
-    </div>
-  <% end %>
+      <!-- form body -->
+      <fieldset>
+        <%= form.label :file, :class => "plain-text" %>
+        <!-- <%= form.file_field :file %> -->
+        <%= form.file_field :file, :disabled => true %>
+      </fieldset>
+      <fieldset>
+        <%= form.label :name, :class => "plain-text" %>
+        <!-- <%= form.text_field :name, :required => true %> -->
+        <%= form.text_field :name, :disabled => true %>
+      </fieldset>
 
 
-  <!-- ** if errors from prev cloudinary upload attempt -->
-  <% if @upload_error %>
-    <div id="upload-errors">
-      <p class="plain-text">Sorry, your video could not be uploaded.</p>
-      <ul>
-        <!-- keeping in ul for consistent aesthetic -->
-        <li class="plain-text highlight"><%= @upload_error %></li>
-      </ul>
-    </div>
-  <% end %>
+      <div class="actions">
+        <!-- <%= form.submit %> -->
+        <%= form.submit :disabled => true %>
+      </div>
+    <% end %>
 
-  <!-- ** if errors from previous db save attempt ** -->
-  <% if @video.errors.any? %>
-    <div id="save-errors">
-      <h3>Sorry, your video could not be saved.</h3>
-      <ul>
-        <%= image.errors.full_messages.each do |m| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <!-- ** if errors from prev cloudinary upload attempt -->
+    <% if @upload_error %>
+      <div id="upload-errors">
+        <p class="plain-text">Sorry, your video could not be uploaded.</p>
+        <ul>
+          <!-- keeping in ul for consistent aesthetic -->
+          <li class="plain-text highlight"><%= @upload_error %></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- ** if errors from previous db save attempt ** -->
+    <% if @video.errors.any? %>
+      <div id="save-errors">
+        <h3>Sorry, your video could not be saved.</h3>
+        <ul>
+          <%= image.errors.full_messages.each do |m| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
 
-  <!-- PROGRESS -->
-  <div class="progress">
-    <p class="plain-text">Upload in progress...</p>
-    <div class="spinner">
+    <!-- PROGRESS -->
+    <div class="progress">
+      <p class="plain-text">Upload in progress...</p>
+      <div class="spinner">
       <div class="square1"></div>
       <div class="square2"></div>
     </div>
-  </div>
+  <% end %>
 
 </div>
